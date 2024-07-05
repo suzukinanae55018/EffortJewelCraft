@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :encrypted_password, presence: true, length: { minimum: 8, maximum: 50 }, uniqueness: true
-  validates :email, presence: true, length: { maximum: 100 }
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 100 }
 
@@ -19,4 +17,14 @@ class User < ApplicationRecord
   #中間テーブルの記述↓
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
+
 end

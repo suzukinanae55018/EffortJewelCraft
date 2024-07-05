@@ -12,13 +12,14 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
   get 'admin' => 'admin/homes#top'
     namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]
       resources :groups, only: [:index, :destroy]
       resources :diary_record_comments, only: [:index, :destroy]
     end
-
+    
   root to: 'public/homes#top'
   get 'about', to: 'public/homes#about', as: 'about'
   get 'policies', to: 'public/policies#index', as: 'policies'
