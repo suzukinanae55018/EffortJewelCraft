@@ -1,77 +1,47 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'groups/index'
-    get 'groups/destroy'
-  end
-  namespace :admin do
-    get 'diary_record_comments/index'
-    get 'diary_record_comments/destroy'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-    get 'users/destroy'
-    get 'users/update'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'group_users/create'
-    get 'group_users/destroy'
-  end
-  namespace :public do
-    get 'groups/new'
-    get 'groups/create'
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/edit'
-    get 'groups/update'
-    get 'groups/destroy'
-  end
-  namespace :public do
-    get 'favorites/create'
-    get 'favorites/destroy'
-  end
-  namespace :public do
-    get 'diary_record_comments/create'
-    get 'diary_record_comments/destroy'
-  end
-  namespace :public do
-    get 'diary_records/new'
-    get 'diary_records/create'
-    get 'diary_records/index'
-    get 'diary_records/show'
-    get 'diary_records/edit'
-    get 'diary_records/update'
-    get 'diary_records/destroy'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/update'
-    get 'users/destroy'
-    get 'users/index'
-  end
-  namespace :public do
-    get 'policies/index'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-# 顧客用
-# URL /customers/sign_in ...
-devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
 
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  # 顧客用
+  # URL /customers/sign_in ...
+  devise_for :users,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  get 'admin' => 'admin/homes#top'
+    namespace :admin do
+      resources :users, only: [:index, :show, :edit, :update, :destroy]
+      resources :groups, only: [:index, :destroy]
+      resources :diary_record_comments, only: [:index, :destroy]
+    end
+
+  root to: 'public/homes#top'
+  get 'about', to: 'public/homes#about', as: 'about'
+  get 'policies', to: 'public/policies#index', as: 'policies'
+
+  scope module: :public do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+
+    resources :diary_records, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+      resources :diary_record_comments, only: [:create, :destroy]
+        resource :favorite, only: [:create, :destroy]
+  end
+
+    resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
+      resources :group_users, only: [:create, :destroy]
+  end
+
+
+  get '/search' => 'public/searches#search'
+  get '/tag_search' => 'public/tag_searches#tag_search'
+
+  devise_scope :user do
+      post "users/guest_sign_in", to: "public/users/sessions#guest_sign_in"
+    end
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  end
 end
