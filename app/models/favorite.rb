@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
-　belongs_to :user
-　belongs_to :diary_record
+  belongs_to :user
+  belongs_to :diary_record
 end
