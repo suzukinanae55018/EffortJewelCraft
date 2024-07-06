@@ -18,14 +18,14 @@ Rails.application.routes.draw do
   }
 
   get 'admin' => 'admin/homes#top'
-    namespace :admin do
-      resources :users, only: [:index, :show, :edit, :update, :destroy]
-      resources :groups, only: [:index, :destroy]
-      resources :diary_records, only: [:index, :destroy] do
-        resources :diary_record_comments, only: [:index, :destroy]
-      end  
+  namespace :admin do
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :groups, only: [:index, :destroy]
+    resources :diary_records, only: [:index, :destroy] do
+      resources :diary_record_comments, only: [:index, :destroy]
     end
-    
+  end
+
   root to: 'public/homes#top'
   get 'about', to: 'public/homes#about', as: 'about'
   get 'policies', to: 'public/policies#index', as: 'policies'
@@ -35,19 +35,18 @@ Rails.application.routes.draw do
 
     resources :diary_records, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
       resources :diary_record_comments, only: [:create, :destroy]
-        resource :favorite, only: [:create, :destroy]
-  end
+      resource :favorite, only: [:create, :destroy]
+    end
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
       resources :group_users, only: [:create, :destroy]
-  end
+    end
 
+    get '/search' => 'searches#search'
+    get '/tag_search' => 'tag_searches#tag_search'
 
-  get '/search' => 'public/searches#search'
-  get '/tag_search' => 'public/tag_searches#tag_search'
-
-  devise_scope :user do
-      post "users/guest_sign_in", to: "public/users/sessions#guest_sign_in"
+    devise_scope :user do
+      post "users/guest_sign_in", to: "sessions#guest_sign_in"
     end
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
