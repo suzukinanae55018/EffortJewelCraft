@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'diary_records/index'
+    get 'diary_records/destroy'
+  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :users,skip: [:passwords], controllers: {
@@ -17,7 +21,9 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users, only: [:index, :show, :edit, :update, :destroy]
       resources :groups, only: [:index, :destroy]
-      resources :diary_record_comments, only: [:index, :destroy]
+      resources :diary_records, only: [:index, :destroy] do
+        resources :diary_record_comments, only: [:index, :destroy]
+      end  
     end
     
   root to: 'public/homes#top'
