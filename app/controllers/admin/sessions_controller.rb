@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 class Admin::SessionsController < Devise::SessionsController
-  # 後で変える
+  before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
   def after_sign_in_path_for(resource)
-    diary_record_path
+    admin_users_path
   end
 
   def after_sign_out_path_for(resource)
     root_path
   end
-  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -26,10 +27,14 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+  end
+    # emailパラメータを許可する
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
+  end
 end

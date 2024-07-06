@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-# 後で変える
+
   def after_sign_in_path_for(resource)
-    about_path
+    user_path(current_user)
   end
 
   def after_sign_out_path_for(resource)
