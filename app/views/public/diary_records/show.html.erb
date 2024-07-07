@@ -1,2 +1,29 @@
-<h1>Public::DiaryRecords#show</h1>
-<p>Find me in app/views/public/diary_records/show.html.erb</p>
+<div class='col-12'>
+  <h2>投稿詳細</h2>
+  <table class="table">
+    <tbody>
+        <tr>
+          <td>
+            <%= link_to user_path(@user.id) do %>
+              <%= image_tag @diary_record.user.get_profile_image(100, 100) %><br/>
+              <%= @diary_record.user.name %>
+            <% end %>
+          </td>
+          <td><%= link_to @diary_record.title, diary_record_path(@diary_record.id) %></td>
+          <td><%= @diary_record.body %></td>
+          <td><%= @diary_record.category %></td>
+          <td><%= image_tag @diary_record.get_diary_record_image(100, 100)%></td>
+        <!--後で背景を選べるようにする-->
+        <td><%= image_tag @diary_record.get_background_image(100, 100) %></td>
+        </tr>
+
+        <% if @diary_record.user == current_user %>
+        <td><%= link_to "編集", edit_diary_record_path(@diary_record), class: "btn btn-sm btn-success" %></td>
+        <% end %>
+
+        <% if @diary_record.user == current_user %>
+        <td><%= link_to "削除", diary_record_path(@diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
+        <% end %>
+    </tbody>
+  </table>
+</div>

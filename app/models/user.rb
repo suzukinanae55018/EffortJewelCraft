@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 100 }
 
-  has_one_attached :user_image
+  has_one_attached :profile_image
 
   has_many :diary_records, dependent: :destroy
   has_many :diary_record_comments, dependent: :destroy
@@ -17,6 +17,14 @@ class User < ApplicationRecord
   #中間テーブルの記述↓
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
+
+  def get_profile_image(width, height)
+    unless profile_image.attached?
+      file_path = Rails.root.join("app/assets/images/sapphire.jpg")
+      profile_image.attach(io: File.open(file_path), filename: "sapphire.jpg", content_type: "image/jpeg")
+    end
+    profile_image.variant(resize_to_limit: [width, height]).processed
+  end
 
   GUEST_USER_EMAIL = "guest@example.com"
 

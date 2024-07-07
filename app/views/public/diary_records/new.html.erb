@@ -1,2 +1,30 @@
-<h1>Public::DiaryRecords#new</h1>
-<p>Find me in app/views/public/diary_records/new.html.erb</p>
+    <h3>新規作成</h3>
+    
+    <div class="col-12">
+      <%= form_with model: @diary_record do |f| %>
+      <div class="form-group">
+        <%= f.label :title, "タイトル" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :body, "投稿内容" %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :category, "タグ（複数登録できます）" %>
+        <%= f.text_field :category, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :diary_record_image, "投稿画像" %>
+        <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
+      </div>
+      <!--後で選べるようにする-->
+      <div class="form-group">
+        <%= f.label :background_image, "背景画像" %>
+        <%= f.file_field :background_image, accept: "image/*", class: "w-100" %>
+      </div>
+      <span class="form-group">
+          <%= f.submit '投稿する', class: "btn btn-sm btn-success" %>
+      </span>
+      <% end%>
+    </div>
