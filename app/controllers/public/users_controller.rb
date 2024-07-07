@@ -1,5 +1,7 @@
 class Public::UsersController < ApplicationController
   def show
+    @user = User.find(params[:id])
+    @diary_records = @user.diary_records
   end
 
   def edit
