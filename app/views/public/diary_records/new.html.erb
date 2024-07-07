@@ -1,5 +1,5 @@
     <h3>新規作成</h3>
-    
+
     <div class="col-12">
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
@@ -18,13 +18,13 @@
         <%= f.label :diary_record_image, "投稿画像" %>
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
-      <!--後で選べるようにする-->
+      <!--後で選べるようにする。if文であらかじめ用意した画像を背景色とする-->
       <div class="form-group">
         <%= f.label :background_image, "背景画像" %>
         <%= f.file_field :background_image, accept: "image/*", class: "w-100" %>
       </div>
       <span class="form-group">
-          <%= f.submit '投稿する', class: "btn btn-sm btn-success" %>
+        <%= f.submit '投稿する', class: "btn btn-sm btn-success" %>
       </span>
       <% end%>
     </div>

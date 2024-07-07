@@ -43,9 +43,9 @@ class Public::DiaryRecordsController < ApplicationController
   end
 
   def destroy
-    @diary_record = current_user.diary_records.find(params[:id])
+    diary_record = current_user.diary_records.find(params[:id])
 
-    if @diary_record.destroy
+    if diary_record.destroy
       flash[:notice] = "投稿の削除に成功しました"
       redirect_to user_path(current_user)
     else
