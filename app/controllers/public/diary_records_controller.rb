@@ -63,7 +63,7 @@ class Public::DiaryRecordsController < ApplicationController
   def is_matching_login_user
     diary_record = DiaryRecord.find(params[:id])
       unless diary_record.user_id == current_user.id
-        redirect_to diary_records_path
+        redirect_to diary_records_path, notice: "他のユーザーの投稿編集はできません。"
       end
   end
 end
