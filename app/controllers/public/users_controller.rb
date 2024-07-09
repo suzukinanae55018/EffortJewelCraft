@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @diary_records = @user.diary_records.page(params[:page]).per(15)
+    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def edit
@@ -35,7 +35,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(15)
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(15)
     # if params[:name].present?
     #   @users = @users.where(name: params[:name])
     # end

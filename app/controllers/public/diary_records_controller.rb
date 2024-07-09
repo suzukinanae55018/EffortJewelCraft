@@ -18,7 +18,7 @@ class Public::DiaryRecordsController < ApplicationController
   end
 
   def index
-    @diary_records = DiaryRecord.all.page(params[:page]).per(15)
+    @diary_records = DiaryRecord.all.order(created_at: :desc).page(params[:page]).per(15)
   end
 
   def show
