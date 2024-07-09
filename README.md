@@ -28,8 +28,12 @@
 ## 使用素材
 著作権を考慮し、架空のデータを扱う予定です。  
 なお今後、実在するデータを利用する際には、事前に著作権保持者と契約を結んだ上で利用します。  
-photo AC　　
-https://www.photo-ac.com/
+photo AC  
+https://www.photo-ac.com/  
+illust AC  
+https://www.ac-illust.com/  
+Webサイトの利用規約  kiyaku.jp  
+https://kiyaku.jp/index.html
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
 <!-- - アプリケーションの実装に使用したgem/bootstrapのリファレンスなどの記載は不要です。 -->
 <!-- - 使用しない場合は、使用素材の項目をREADMEから削除してください。 -->
