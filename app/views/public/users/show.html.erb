@@ -10,7 +10,7 @@
       <table class='table'>
         <tbody>
           <tr>
-            <%= image_tag @user.get_profile_image(100, 100) %>
+            <%= image_tag @user.get_profile_image(100, 100), class: 'circle-image' %>
           </tr>
           <tr>
             <td>ユーザー名</td>
@@ -50,7 +50,7 @@
           <% @diary_records.each do |diary_record| %>
           <tr>
             <td>
-            <%= image_tag diary_record.user.get_profile_image(100, 100) %><br/>
+            <%= image_tag diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
             <%= diary_record.user.name %>
             </td>
              <td><%= link_to diary_record.title, diary_record_path(diary_record.id) %></td>
