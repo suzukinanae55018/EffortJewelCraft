@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ /*ユーザーアイコンを丸形にしている*/
 .circle-image {
   height: 100px;
   width: 100px;

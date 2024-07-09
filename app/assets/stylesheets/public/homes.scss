@@ -1,3 +1,51 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// トップページ
+.guest-button {
+  background-image: url('/assets/yellow_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 8px #888888;
+  width: 100%;
+  text-shadow: 2px 2px 4px #fff;
+}
+
+.login-button {
+  background-image: url('/assets/skyblue_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 8px #888888;
+  width: 100%;
+  text-shadow: 2px 2px 4px #fff;
+}
+
+.signup-button {
+  background-image: url('/assets/green_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 8px #888888;
+  width: 100%;
+  text-shadow: 2px 2px 4px #fff;
+}
+
+.admin-button {
+  background-image: url('/assets/purple_background.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 2px 2px 8px #888888;
+  width: 100%;
+  text-shadow: 2px 2px 4px #fff;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
