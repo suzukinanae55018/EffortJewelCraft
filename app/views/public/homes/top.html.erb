@@ -5,16 +5,16 @@
       <p style="font-family: Georgia, monospace; color: #191970;">Effort Jewel Craftでは、あなたの日常の努力や結果を記録し、</p>
       <p class="mb-4" style="font-family: Georgia, monospace; color: #191970;">多くの人々と共有することができます</p>
 
-        <div class="row">
+        <div class="top-button">
           <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-default mb-3 guest-button", method: :post %>
         </div>
-        <div class="row">
+        <div class="top-button">
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-default mb-3 login-button" %>
         </div>
-        <div class="row">
+        <div class="top-button">
           <%= link_to "新規登録", new_user_registration_path, class: "btn btn-default mb-3 signup-button" %>
         </div>
-        <div class="row">
+        <div class="top-button">
           <%= link_to "管理者としてログイン", new_admin_session_path, class: "btn btn-default admin-button" %>
         </div>
 
