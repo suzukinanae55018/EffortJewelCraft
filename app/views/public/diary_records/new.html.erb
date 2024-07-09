@@ -1,4 +1,18 @@
     <h3>新規作成</h3>
+<div>
+  <% if @diary_record.errors.any? %>
+    <% if @diary_record.errors.count > 1 %>
+      <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
+    <% else %>
+      <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
+    <% end %>
+    <ul>
+      <% @diary_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
 
     <div class="col-12">
       <%= form_with model: @diary_record do |f| %>

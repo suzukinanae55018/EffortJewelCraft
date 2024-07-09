@@ -1,5 +1,20 @@
 <div class="container">
   <div class="row">
+    <div>
+    <% if @user.errors.any? %>
+      <% if @user.errors.count > 1 %>
+        <p><%= @user.errors.count %>errors prohibited this user info from being saved:</p>
+      <% else %>
+        <p><%= @user.errors.count %>error prohibited this user info from being saved:</p>
+      <% end %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
+
     <%= form_with model: @user, class: "form" do |f| %>
       <div class="form-group">
         <%= f.label :name, "ユーザー名" %><br>
