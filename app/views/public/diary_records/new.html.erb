@@ -19,15 +19,15 @@
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, class: "form-control" %>
+        <%= f.text_field :title, class: "form-control", id: "post-title" %>
       </div>
       <div class="form-group">
         <%= f.label :body, "投稿内容" %>
-        <%= f.text_area :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control", id: "post-body" %>
       </div>
       <div class="form-group">
         <%= f.label :category, "タグ" %>
-        <%= f.text_field :category, class: "form-control" %>
+        <%= f.text_field :category, class: "form-control", id: "post-title" %>
       </div>
       <div class="form-group">
         <%= f.label :diary_record_image, "投稿画像（任意）" %>
@@ -45,3 +45,22 @@
     </div>
   </div>
 </div>
+<script>
+  const textarea = document.getElementById('post-body');
+
+  textarea.addEventListener('input', function() {
+    const text = this.value;
+    const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
+
+    this.value = lines.join('\n');
+  });
+
+  const textfield = document.getElementById('post-title');
+
+  textfield.addEventListener('input', function() {
+    const text = this.value;
+    const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
+
+    this.value = lines.join('\n');
+  });
+</script>

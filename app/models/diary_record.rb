@@ -1,7 +1,7 @@
 class DiaryRecord < ApplicationRecord
 
-  validates :title, presence: true, length: { maximum: 30 }
-  validates :body, presence: true, length:  { maximum: 200 }
+  validates :title, presence: true, length: { maximum: 60 }
+  validates :body, presence: true, length:  { maximum: 300 }
   validates :category, presence: true,length: { maximum: 50 }
 
   has_one_attached :diary_record_image

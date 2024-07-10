@@ -1,3 +1,51 @@
 // Place all the styles related to the public/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.bg-image {
+  position: relative;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 15%;
+  left: 11%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
+
+.overlay-text1 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
+
+.overlay-text2 {
+  position: absolute;
+  top: 29%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
+
+.overlay-text3 {
+  position: absolute;
+  top: 94%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
+
+.overlay-image {
+  position: absolute;
+  top: 15%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
