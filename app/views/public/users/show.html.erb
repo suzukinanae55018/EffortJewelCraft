@@ -45,7 +45,7 @@
           <div class="overlay-text1"><%= link_to diary_record.title, diary_record_path(diary_record.id) %></div>
           <div class="overlay-text2"><%= diary_record.body %></div>
           <div class="overlay-text3">タグ：<%= diary_record.category %></div>
-          <div class="overlay-image"><%= image_tag diary_record.get_diary_record_image(200, 120)%></div>
+          <div class="overlay-image"><%= image_tag diary_record.get_diary_record_image(150, 120)%></div>
         </div>
       <% end %>
 
