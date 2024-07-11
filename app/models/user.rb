@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   def get_profile_image(width, height)
     unless profile_image.attached?
-      file_path = Rails.root.join("app/assets/images/user1.png")
+      file_path = Rails.root.join("app","assets","images","user1.png")
       profile_image.attach(io: File.open(file_path), filename: "user1.png", content_type: "image/png")
     end
     profile_image.variant(resize_to_limit: [width, height]).processed

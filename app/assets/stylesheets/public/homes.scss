@@ -4,7 +4,7 @@
 
 // トップページ
 .guest-button {
-  background-image: url('/assets/yellow_background.jpg');
+  background-image: image-url("yellow_background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -14,7 +14,7 @@
 }
 
 .login-button {
-  background-image: url('/assets/skyblue_background.jpg');
+  background-image: image-url("skyblue_background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -24,7 +24,7 @@
 }
 
 .signup-button {
-  background-image: url('/assets/green_background.jpg');
+  background-image: image-url("green_background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -34,7 +34,7 @@
 }
 
 .admin-button {
-  background-image: url('/assets/purple_background.jpg');
+  background-image: image-url("purple_background.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
