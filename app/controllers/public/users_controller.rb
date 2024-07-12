@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :ensure_guest_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   def show
     @user = User.find(params[:id])
