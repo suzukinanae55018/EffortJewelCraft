@@ -27,17 +27,27 @@
             <td><%= image_tag @diary_record.get_diary_record_image(100, 100)%></td>
           <!--後で背景を選べるようにする-->
           <td><%= image_tag @diary_record.get_background_image(100, 100) %></td>
+          <!--非同期化-->
+          <td id="comment_counter">
+            <%= render "public/diary_record_comments/counter", diary_record: @diary_record %>
+          </td>
+
           </tr>
-  
+
           <% if @diary_record.user == current_user %>
           <td><%= link_to "編集", edit_diary_record_path(@diary_record), class: "btn btn-sm btn-success" %></td>
           <% end %>
-  
+
           <% if @diary_record.user == current_user %>
           <td><%= link_to "削除", diary_record_path(@diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
           <% end %>
       </tbody>
     </table>
+    <!--非同期化-->
+    <div id="comment_index">
+      <%= render "public/diary_record_comments/index", diary_record: @diary_record %>
+    </div>
+      <%= render "public/diary_record_comments/form", diary_record: @diary_record, diary_record_comment: @diary_record_comment %>
     </div>
   </div>
 </div>
