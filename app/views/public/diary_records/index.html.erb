@@ -1,4 +1,5 @@
 <!--レイアウトは後で-->
+<%= render 'public/searches/search' %>
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-12 mx-auto">
@@ -14,7 +15,7 @@
             <th colspan="3"></th>
           </tr>
         </thead>
-      
+
         <tbody>
           <% @diary_records.each do |diary_record| %>
             <tr>
