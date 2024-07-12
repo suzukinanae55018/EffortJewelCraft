@@ -7,7 +7,7 @@
         <% elsif @range == "User" %>
       <h2>Users search for "<%= params[:word] %>"</h2>
         <% end %>
-      
+
       <table class="table table-hover table-inverse">
         <!--検索対象モデルがUser -->
         <% if @range == "User" %>
@@ -16,7 +16,7 @@
               <tr>
                 <td>
                   <%= link_to user_path(user) do %>
-                    <%= image_tag user.get_profile_image(100, 100) %><br/>
+                    <%= image_tag user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                     <%= user.name %>
                   <%end%>
                 </td>
