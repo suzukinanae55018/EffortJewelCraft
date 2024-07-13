@@ -1,16 +1,20 @@
-<h1>Public::Groups#edit</h1>
-<p>Find me in app/views/public/groups/edit.html.erb</p>
-<!--<div>-->
-<!--  <%# if @diary_record.errors.any? %>-->
-<!--    <%# if @diary_record.errors.count > 1 %>-->
-<!--      <p><%#= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>-->
-<!--    <%# else %>-->
-<!--      <p><%#= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>-->
-<!--    <%# end %>-->
-<!--    <ul>-->
-<!--      <%# @diary_record.errors.full_messages.each do |message| %>-->
-<!--        <li><%#= message %></li>-->
-<!--      <%# end %>-->
-<!--    </ul>-->
-<!--  <%# end %>-->
-<!--</div>-->
+<% if @group.errors.any? %>
+  <% if @group.errors.count > 1 %>
+    <p><%= @group.errors.count %>errors prohibited this diary_record from being saved:</p>
+  <% else %>
+    <p><%= @group.errors.count %>error prohibited this diary_record from being saved:</p>
+  <% end %>
+  <ul>
+    <% @group.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h3>グループ編集</h3>
+      <%= render 'form', group: @group %>
+    </div>
+  </div>
+</div>
