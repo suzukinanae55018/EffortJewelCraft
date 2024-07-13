@@ -12,6 +12,11 @@ class Group < ApplicationRecord
   def is_owned_by?(user)
     owner.id == user.id
   end
+
+  def includesUser?(user)
+    group_users.exists?(user_id: user.id)
+  end
+
   def get_group_image(width, height)
     unless group_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "user1.png")
