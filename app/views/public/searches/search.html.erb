@@ -12,7 +12,7 @@
         <!--検索対象モデルがUser -->
         <% if @range == "User" %>
           <tbody>
-            <% @users.each do |user| %>
+            <% @users.order(created_at: :desc).each do |user| %>
               <tr>
                 <td>
                   <%= link_to user_path(user) do %>
@@ -37,11 +37,11 @@
           </tr>
         </thead>
           <tbody>
-            <% @diary_records.each do |diary_record| %>
+            <% @diary_records.order(created_at: :desc).each do |diary_record| %>
               <tr>
                 <td>
                   <%= link_to user_path(diary_record.user) do %>
-                    <%= image_tag diary_record.user.get_profile_image(100, 100) %><br/>
+                    <%= image_tag diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                     <%= diary_record.user.name %></td>
                   <% end%>
                 <td><%= link_to diary_record.title, diary_record_path(diary_record.id) %></td>

@@ -19,12 +19,12 @@
           <% @diary_records.each do |diary_record| %>
             <tr>
               <td>
-              <%= link_to user_path(diary_record.user) do %>
+              <%= link_to admin_user_path(diary_record.user) do %>
                 <%= image_tag diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                 <%= diary_record.user.name %>
               <% end %>
               </td>
-              <td><%= link_to diary_record.title, diary_record_path(diary_record.id) %></td>
+              <td><%= diary_record.title %></td>
               <td><%= diary_record.body %></td>
               <td><%= diary_record.category %></td>
               <td><%= image_tag diary_record.get_diary_record_image(100, 100) %></td>
