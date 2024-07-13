@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'admin' => 'admin/homes#top'
   namespace :admin do
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :destroy]
     resources :groups, only: [:index, :destroy]
     resources :diary_records, only: [:index, :destroy] do
       resources :diary_record_comments, only: [:index, :destroy]
@@ -39,7 +39,6 @@ Rails.application.routes.draw do
     end
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
-      resources :group_users, only: [:create, :destroy]
     end
 
     devise_scope :user do

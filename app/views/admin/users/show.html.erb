@@ -19,12 +19,6 @@
         </tbody>
       </table>
 
-      <div class='row'>
-        <%= link_to edit_admin_user_path(@user), class: "col-12" do %>
-          <div class="btn btn-outline-secondary btn-block mt-4">
-          <i class="fa-solid fa-user-gear"></i>
-          </div>
-        <% end %>
         <div class="col mt-3">
           <% if @user.email != "guest@example.com" %>
             <%= link_to "退会", admin_user_path(@user.id),class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "すべての情報が削除されます。本当に退会しますか？" } %>
