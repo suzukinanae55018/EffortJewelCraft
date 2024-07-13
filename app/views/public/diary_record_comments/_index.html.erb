@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% diary_record.diary_record_comments.each do |diary_record_comment| %>
+    <tr>
+      <td>
+        <%= link_to user_path(diary_record_comment.user) do %>
+          <%= image_tag diary_record_comment.user.get_profile_image(100, 100), class: 'circle-image' %><br>
+          <%= diary_record_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= diary_record_comment.comment %></td>
+      <td>
+        <% if diary_record_comment.user == current_user %>
+          <%= link_to "削除", diary_record_diary_record_comment_path(diary_record, diary_record_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

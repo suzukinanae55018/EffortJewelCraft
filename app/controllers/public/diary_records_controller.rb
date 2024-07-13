@@ -1,6 +1,6 @@
 class Public::DiaryRecordsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
-
+  before_action :authenticate_user!, except: [:index, :show]
   def new
     @diary_record = DiaryRecord.new
   end
@@ -25,6 +25,7 @@ class Public::DiaryRecordsController < ApplicationController
   def show
     @diary_record = DiaryRecord.find(params[:id])
     @user = @diary_record.user
+    @diary_record_comment = DiaryRecordComment.new
   end
 
   def edit

@@ -29,4 +29,18 @@ class DiaryRecord < ApplicationRecord
     end
     background_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @diary_record = DiaryRecord.where("title LIKE?","#{word}")
+    elsif search == "forward_match"
+      @diary_record = DiaryRecord.where("title LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @diary_record = DiaryRecord.where("title LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @diary_record = DiaryRecord.where("title LIKE?","%#{word}%")
+    else
+      @diary_record = DiaryRecord.all
+    end
+  end
 end
