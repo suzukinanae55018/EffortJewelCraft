@@ -41,6 +41,15 @@ class Public::GroupsController < ApplicationController
   end
 
   def destroy
+    group = Group.find(params[:id])
+
+    if group.destroy
+      flash[:notice] = "グループの削除に成功しました"
+      redirect_to groups_path
+    else
+      flash.now[:alert] = "グループの削除に失敗しました。"
+      render :show
+    end
   end
 
   private
