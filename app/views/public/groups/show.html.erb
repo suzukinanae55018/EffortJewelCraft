@@ -6,6 +6,8 @@
             <th></th>
             <th>グループ名</th>
             <th>紹介文</th>
+            <th>テーマ</th>
+            <th>ルール</th>
             <th>メンバー</th>
             <th></th>
             <th colspan="3"></th>
@@ -16,6 +18,8 @@
             <td><%= image_tag @group.get_group_image(100,100), class: 'circle-image' %></td>
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
+            <td><%= @group.theme %></td>
+            <td><%= @group.rule %></td>
             <td><% @group.users.each do |user| %>
               <li style="list-style: none;"><%= user.name %></li>
             <% end %>

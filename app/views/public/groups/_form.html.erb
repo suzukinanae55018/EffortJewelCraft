@@ -10,7 +10,17 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :グループ画像 %>
+    <%= f.label :テーマ %>
+    <%= f.text_field :theme, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ルール %>
+    <%= f.text_field :rule, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :画像 %>
     <%= f.file_field :group_image, class: "form-control-file" , accept: "image/*" %>
   </div>
 

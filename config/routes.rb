@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     end
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
-      resources :group_users, only: [:create, :destroy]
+      resource :group_users, only: [:create, :destroy]
     end
 
     devise_scope :user do
