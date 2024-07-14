@@ -2,6 +2,8 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :introduction, presence: true, length:  { maximum: 300 }
+  validates :theme, presence: true, length: { maximum: 100 }
+  validates :rule, presence: true, length: { maximum: 100 }
 
   has_one_attached :group_image
 
