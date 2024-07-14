@@ -34,7 +34,7 @@ class Public::GroupsController < ApplicationController
   def update
     if @group.update(group_params)
       flash[:notice] = "グループの更新に成功しました。"
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       flash.now[:alert] = "グループの更新に失敗しました。"
       render :edit
@@ -43,14 +43,8 @@ class Public::GroupsController < ApplicationController
 
   def destroy
     group = Group.find(params[:id])
-
-    if group.destroy
-      flash[:notice] = "グループの削除に成功しました"
-      redirect_to groups_path
-    else
-      flash.now[:alert] = "グループの削除に失敗しました。"
-      render :show
-    end
+      group.destroy
+      redirect_to groups_path, notice: "グループの削除に成功しました。"
   end
 
   private

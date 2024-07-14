@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     end
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
+      resource :permits, only: [:create, :destroy]
       resource :group_users, only: [:create, :destroy]
     end
 
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
       post "users/guest_sign_in", to: "sessions#guest_sign_in"
     end
     get "search" => "searches#search"
+    get "groups/:id/permits" => "groups#permits", as: :permits
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end
 end
