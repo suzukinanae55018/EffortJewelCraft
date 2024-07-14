@@ -27,4 +27,18 @@ class Group < ApplicationRecord
     end
     group_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @group = Group.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @group = Group.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @group = Group.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @group = Group.where("name LIKE?","%#{word}%")
+    else
+      @group = Group.all
+    end
+  end
 end

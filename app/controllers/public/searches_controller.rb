@@ -10,4 +10,9 @@ before_action :authenticate_user!
       @diary_records = DiaryRecord.looks(params[:search], params[:word]).page(params[:page]).per(15)
     end
   end
+
+  def group_search
+    @range = params[:range]
+    @groups = Group.looks(params[:search], params[:word]).page(params[:page]).per(15)
+  end
 end
