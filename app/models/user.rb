@@ -16,7 +16,7 @@ class User < ApplicationRecord
   # お気に入りをした投稿を取得できる↑
   #中間テーブルの記述↓
   has_many :group_users, dependent: :destroy
-  has_many   :permits,          dependent: :destroy
+  has_many :permits, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
 
   def get_profile_image(width, height)
