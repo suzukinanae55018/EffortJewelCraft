@@ -40,7 +40,11 @@ Rails.application.routes.draw do
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do
       resource :permits, only: [:create, :destroy]
-      resource :group_users, only: [:create, :destroy]
+      resource :group_users, only: [:create, :destroy] do
+        member do
+          delete 'decline', as: :decline
+        end
+      end
     end
 
     devise_scope :user do

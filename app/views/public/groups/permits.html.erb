@@ -10,7 +10,7 @@
           <thead class="thead-dark">
             <tr>
               <th>名前</th>
-
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -20,6 +20,9 @@
                 <td><%= link_to permit.user.name, user_path(permit.user.id), class: "text-dark" %></td>
                 <td class="text-right">
                   <%= link_to '加入許可', group_group_users_path(@group, permit_id: permit.id), method: :post, class: "btn btn-sm btn-success" %>
+                </td>
+                <td class="text-right">
+                  <%= link_to '加入拒否', decline_group_group_users_path(@group, permit_id: permit.id), method: :delete, class: "btn btn-sm btn-danger" %>
                 </td>
               </tr>
             <% end %>
