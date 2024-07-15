@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <div class="col-sm-12 col-md-8 mx-auto">
       <h3>新規作成</h3>
       <div>
         <% if @diary_record.errors.any? %>
@@ -38,7 +38,15 @@
         <%= f.label :background_image, "背景画像" %>
         <%= f.file_field :background_image, accept: "image/*", class: "w-100" %>
       </div>
-      <span class="form-group">
+      
+      <!--<div class="form-group">-->
+      <!--  <%# @images.each do |image| %>-->
+      <!--    <%#= f.label image do %>-->
+      <!--    <%#= f.radio_button :background_image, image, id: image, class: 'input-radio' %>-->
+      <!--    <%#= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>-->
+      <!--    <%# end %>-->
+      <!--  <%# end %>-->
+      <!--</div>-->
         <%= f.submit '投稿する', class: "btn btn-sm btn-success" %>
       </span>
       <% end%>

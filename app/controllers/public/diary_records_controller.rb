@@ -3,6 +3,8 @@ class Public::DiaryRecordsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def new
     @diary_record = DiaryRecord.new
+    # 画像を選べるようにする
+    # @images = ['blue_jewel.jpg', 'rainbow_jewel_background.jpg', 'green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg']
   end
 
   def create
@@ -64,6 +66,11 @@ class Public::DiaryRecordsController < ApplicationController
   def diary_record_params
     params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
   end
+
+  # 画像を選べるようにする
+  # def diary_record_params
+  #   params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image => [])
+  # end
 
   def is_matching_login_user
     diary_record = DiaryRecord.find(params[:id])
