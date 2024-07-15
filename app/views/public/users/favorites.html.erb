@@ -1,0 +1,17 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12 mx-auto">
+    <table class="table table-hover table-inverse">
+      <tbody>
+        <% @favorite_diary_records.each do |favorite_diary_record| %>
+        <tr>
+          <td>
+            <%= link_to favorite_diary_record.title, diary_record_path(favorite_diary_record) %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

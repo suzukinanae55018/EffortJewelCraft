@@ -1,7 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+   before_action :is_matching_login_user_favorites, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :favorites]
 
   def show
     @user = User.find(params[:id])
@@ -46,6 +47,12 @@ class Public::UsersController < ApplicationController
     # end
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:diary_record_id)
+    @favorite_diary_records = DiaryRecord.find(favorites)
+  end
+
   private
     def user_params
       params.require(:user).permit(:name, :introduction, :profile_image)
@@ -55,6 +62,13 @@ class Public::UsersController < ApplicationController
       user = User.find(params[:id])
       unless user.id == current_user.id
         redirect_to user_path(current_user), notice: "他のユーザーのプロフィール編集はできません。"
+      end
+    end
+
+    def is_matching_login_user_favorites
+      user = User.find(params[:id])
+      unless user.id == current_user.id
+        redirect_to diary_records_path, notice: "他のユーザーのいいね一覧は閲覧できません。"
       end
     end
 

@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   get 'policies', to: 'public/policies#index', as: 'policies'
 
   scope module: :public do
-    resources :users, only: [:index, :show, :edit, :update, :destroy]
+    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+      member do
+        get :favorites
+      end
+    end
 
     resources :diary_records, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
       resources :diary_record_comments, only: [:create, :destroy]

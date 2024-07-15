@@ -22,6 +22,7 @@
           </tr>
         </tbody>
       </table>
+      <div><%= link_to "いいね一覧", favorites_user_path(current_user) %></div>
 
       <% if @user == current_user && @user.email != "guest@example.com" %>
         <div class='row'>
