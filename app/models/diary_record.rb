@@ -12,6 +12,13 @@ class DiaryRecord < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
   # いいねをしたユーザーを取得できる↑
+  def favorited_by?(user)
+    if user.present?
+      favorites.exists?(user_id: user.id)
+    else
+      false
+    end
+  end
 
   def get_diary_record_image(width, height)
     unless diary_record_image.attached?

@@ -47,9 +47,12 @@
           <div class="overlay-text3">タグ：<%= diary_record.category %></div>
           <div class="overlay-image"><%= image_tag diary_record.get_diary_record_image(150, 120)%></div>
           <div class="overlay-text4">
-            <td id="comment_counter">
+            <div id="comment_counter">
               <%= render "public/diary_record_comments/counter", diary_record: diary_record %>
-            </td>
+            </div>
+            <div id="favorite_buttons_<%= diary_record.id %>">
+              <%= render "public/favorites/favorite-btn", diary_record: diary_record %>
+            </div>
           </div>
         </div>
       <% end %>

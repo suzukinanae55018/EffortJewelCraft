@@ -35,6 +35,9 @@
             <td id="comment_counter">
               <%= render "public/diary_record_comments/counter", diary_record: diary_record %>
             </td>
+            <td id="favorite_buttons_<%= diary_record.id %>">
+              <%= render "public/favorites/favorite-btn", diary_record: diary_record %>
+            </td>
             </tr>
           <% end %>
         </tbody>
