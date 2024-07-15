@@ -38,13 +38,6 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.all.order(created_at: :desc).page(params[:page]).per(15)
-    # if params[:name].present?
-    #   @users = @users.where(name: params[:name])
-    # end
-
-    # if params[:category_id].present?
-
-    # end
   end
 
   def favorites
