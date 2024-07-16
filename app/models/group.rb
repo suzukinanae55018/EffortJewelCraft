@@ -1,5 +1,4 @@
 class Group < ApplicationRecord
-
   validates :name, presence: true, length: { maximum: 30 }
   validates :introduction, presence: true, length:  { maximum: 300 }
   validates :theme, presence: true, length: { maximum: 100 }
@@ -9,7 +8,7 @@ class Group < ApplicationRecord
 
   has_many :group_users, dependent: :destroy
   has_many :permits, dependent: :destroy
-  belongs_to :owner, class_name: 'User'
+  belongs_to :owner, class_name: "User"
   has_many :users, through: :group_users
 
   def is_owned_by?(user)
@@ -32,11 +31,11 @@ class Group < ApplicationRecord
     if search == "perfect_match"
       @group = Group.where("name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @group = Group.where("name LIKE?","#{word}%")
+      @group = Group.where("name LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @group = Group.where("name LIKE?","%#{word}")
+      @group = Group.where("name LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @group = Group.where("name LIKE?","%#{word}%")
+      @group = Group.where("name LIKE?", "%#{word}%")
     else
       @group = Group.all
     end

@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
-   before_action :is_matching_login_user_favorites, only: [:favorites]
+  before_action :is_matching_login_user_favorites, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :favorites]
 
@@ -26,14 +26,14 @@ class Public::UsersController < ApplicationController
   end
 
   def destroy
-      user = User.find(params[:id])
-      if user.destroy
-        flash[:notice] = "ユーザーを削除しました。"
-        redirect_to root_path
-      else
-        flash.now[:alert] = "ユーザーの削除に失敗しました。"
-        render :edit
-      end
+    user = User.find(params[:id])
+    if user.destroy
+      flash[:notice] = "ユーザーを削除しました。"
+      redirect_to root_path
+    else
+      flash.now[:alert] = "ユーザーの削除に失敗しました。"
+      render :edit
+    end
   end
 
   def index

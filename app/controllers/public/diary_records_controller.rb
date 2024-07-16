@@ -22,9 +22,9 @@ class Public::DiaryRecordsController < ApplicationController
 
   def index
     @diary_records = DiaryRecord.all.order(created_at: :desc).page(params[:page]).per(15)
-     if params[:category].present?
-       @diary_records = @diary_records.where(category: params[:category])
-     end
+    if params[:category].present?
+      @diary_records = @diary_records.where(category: params[:category])
+    end
   end
 
   def show
@@ -62,20 +62,19 @@ class Public::DiaryRecordsController < ApplicationController
   end
 
   private
+    def diary_record_params
+      params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
+    end
 
-  def diary_record_params
-    params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
-  end
+    # 画像を選べるようにする
+    # def diary_record_params
+    #   params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image => ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg'])
+    # end
 
-  # 画像を選べるようにする
-  # def diary_record_params
-  #   params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image => ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg'])
-  # end
-
-  def is_matching_login_user
-    diary_record = DiaryRecord.find(params[:id])
+    def is_matching_login_user
+      diary_record = DiaryRecord.find(params[:id])
       unless diary_record.user_id == current_user.id
         redirect_to diary_records_path, notice: "他のユーザーの投稿編集はできません。"
       end
-  end
+    end
 end

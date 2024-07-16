@@ -1,8 +1,7 @@
 class DiaryRecord < ApplicationRecord
-
   validates :title, presence: true, length: { maximum: 60 }
   validates :body, presence: true, length:  { maximum: 300 }
-  validates :category, presence: true,length: { maximum: 50 }
+  validates :category, presence: true, length: { maximum: 50 }
 
   has_one_attached :diary_record_image
   has_one_attached :background_image
@@ -31,7 +30,7 @@ class DiaryRecord < ApplicationRecord
   # 後で背景を選べるようにする
   def get_background_image(width, height)
     unless background_image.attached?
-      file_path = Rails.root.join("app","assets","images","touka.png")
+      file_path = Rails.root.join("app", "assets", "images", "touka.png")
       background_image.attach(io: File.open(file_path), filename: "touka.png", content_type: "touka.png")
     end
     background_image.variant(resize_to_limit: [width, height]).processed
@@ -39,13 +38,13 @@ class DiaryRecord < ApplicationRecord
 
   def self.looks(search, word)
     if search == "perfect_match"
-      @diary_record = DiaryRecord.where("title LIKE?","#{word}")
+      @diary_record = DiaryRecord.where("title LIKE?", "#{word}")
     elsif search == "forward_match"
-      @diary_record = DiaryRecord.where("title LIKE?","#{word}%")
+      @diary_record = DiaryRecord.where("title LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @diary_record = DiaryRecord.where("title LIKE?","%#{word}")
+      @diary_record = DiaryRecord.where("title LIKE?", "%#{word}")
     elsif search == "partial_match"
-      @diary_record = DiaryRecord.where("title LIKE?","%#{word}%")
+      @diary_record = DiaryRecord.where("title LIKE?", "%#{word}%")
     else
       @diary_record = DiaryRecord.all
     end

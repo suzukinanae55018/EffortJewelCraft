@@ -13,15 +13,15 @@ class Public::GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-      @group.owner_id = current_user.id
-      @group.users << current_user
-      if @group.save
-        flash[:notice] = "グループの作成が成功しました。"
-        redirect_to groups_path
-      else
-        flash.now[:alert] = "グループの作成に失敗しました。"
-        render :new
-      end
+    @group.owner_id = current_user.id
+    @group.users << current_user
+    if @group.save
+      flash[:notice] = "グループの作成が成功しました。"
+      redirect_to groups_path
+    else
+      flash.now[:alert] = "グループの作成に失敗しました。"
+      render :new
+    end
   end
 
   def index
@@ -48,12 +48,11 @@ class Public::GroupsController < ApplicationController
 
   def destroy
     group = Group.find(params[:id])
-      group.destroy
-      redirect_to groups_path, notice: "グループの削除に成功しました。"
+    group.destroy
+    redirect_to groups_path, notice: "グループの削除に成功しました。"
   end
 
   private
-
     def group_params
       params.require(:group).permit(:name, :introduction, :group_image, :theme, :rule)
     end

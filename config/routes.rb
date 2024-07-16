@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
-
   namespace :admin do
-    get 'diary_records/index'
-    get 'diary_records/destroy'
+    get "diary_records/index"
+    get "diary_records/destroy"
   end
   # 顧客用
   # URL /customers/sign_in ...
-  devise_for :users,skip: [:passwords], controllers: {
+  devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   # 管理者用
   # URL /admin/sign_in ...
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
 
-  get 'admin' => 'admin/homes#top'
+  get "admin" => "admin/homes#top"
   namespace :admin do
     resources :users, only: [:index, :show, :destroy]
     resources :groups, only: [:index, :destroy]
@@ -26,9 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'public/homes#top'
-  get 'about', to: 'public/homes#about', as: 'about'
-  get 'policies', to: 'public/policies#index', as: 'policies'
+  root to: "public/homes#top"
+  get "about", to: "public/homes#about", as: "about"
+  get "policies", to: "public/policies#index", as: "policies"
 
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update, :destroy] do
@@ -46,7 +45,7 @@ Rails.application.routes.draw do
       resource :permits, only: [:create, :destroy]
       resource :group_users, only: [:create, :destroy] do
         member do
-          delete 'decline', as: :decline
+          delete "decline", as: :decline
         end
       end
     end
