@@ -34,10 +34,13 @@
         <%= f.label :diary_record_image, "投稿画像" %>
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
-      <!--後で選べるようにする。if文であらかじめ用意した画像を背景色とする-->
       <div class="form-group">
-        <%= f.label :background_image, "背景画像" %>
-        <%= f.file_field :background_image, accept: "image/*", class: "w-100" %>
+        <% @images.each do |image| %>
+          <%= f.label image do %>
+          <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
+          <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
+          <% end %>
+        <% end %>
       </div>
       <span class="form-group mt-3">
         <%= f.submit '更新する', class: "btn btn-sm btn-success" %>
