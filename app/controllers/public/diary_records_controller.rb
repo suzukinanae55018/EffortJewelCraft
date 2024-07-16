@@ -38,19 +38,21 @@ class Public::DiaryRecordsController < ApplicationController
   end
 
   def edit
-    @diary_record = DiaryRecord.find(params[:id])
+    @diary_record = current_user.diary_records.find(params[:id])
     @images = ['skyblue_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'green_background.jpg', 'yellow_background.jpg']
   end
 
   def update
     @diary_record = current_user.diary_records.find(params[:id])
-
-    image_name = params[:diary_record][:background_image_name]
-    file_path = Rails.root.join("app", "assets", "images", image_name)
-    @diary_record.background_image.attach(io: File.open(file_path), filename: image_name, content_type: image_name)
+# 画像だけ、タイトルだけなら問題なくupdateされる,同時にやるとデータベースがロックされる（負荷をかけすぎ？）
+    if params[:diary_record][:background_image_name].present?
+      image_name = params[:diary_record][:background_image_name]
+      file_path = Rails.root.join("app", "assets", "images", image_name)
+      @diary_record.background_image.attach(io: File.open(file_path), filename: image_name, content_type: 'image/jpeg')
+    end
 
     if @diary_record.update(diary_record_params)
-      flash[:notice] = "投稿の編集に成功しました"
+      flash[:notice] = "投稿の編集に成功しました。"
       redirect_to diary_record_path(@diary_record.id)
     else
       flash.now[:alert] = "投稿の編集に失敗しました。"
@@ -72,7 +74,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   private
      def diary_record_params
-       params.require(:diary_record).permit(:title, :body, :category, :diary_record_image)
+       params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
      end
 
     def is_matching_login_user
