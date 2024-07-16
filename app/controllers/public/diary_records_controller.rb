@@ -4,7 +4,7 @@ class Public::DiaryRecordsController < ApplicationController
   def new
     @diary_record = DiaryRecord.new
     # 画像を選べるようにする
-    # @images = ['blue_jewel.jpg', 'rainbow_jewel_background.jpg', 'green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg']
+    # @images = ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg']
   end
 
   def create
@@ -69,7 +69,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   # 画像を選べるようにする
   # def diary_record_params
-  #   params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image => [])
+  #   params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image => ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg'])
   # end
 
   def is_matching_login_user
