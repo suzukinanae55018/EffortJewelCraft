@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(15)
+    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def edit
