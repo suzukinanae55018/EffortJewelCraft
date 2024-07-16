@@ -4,7 +4,7 @@ class Public::DiaryRecordsController < ApplicationController
   def new
     # 画像を選べるようにする
     @diary_record = DiaryRecord.new
-    @images = ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg']
+    @images = ['skyblue_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'green_background.jpg', 'yellow_background.jpg']
   end
 
   def create
@@ -39,7 +39,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   def edit
     @diary_record = DiaryRecord.find(params[:id])
-    @images = ['green_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'skyblue_background.jpg', 'yellow_background.jpg']
+    @images = ['skyblue_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'green_background.jpg', 'yellow_background.jpg']
   end
 
   def update
