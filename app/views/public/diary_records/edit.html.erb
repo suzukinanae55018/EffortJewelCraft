@@ -1,22 +1,22 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-8 px-5 px-sm-0 mx-auto">
-    <div>
-      <% if @diary_record.errors.any? %>
-        <% if @diary_record.errors.count > 1 %>
-          <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
-        <% else %>
-          <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
-        <% end %>
-        <ul>
-          <% @diary_record.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
+    <div class="col-sm-12 col-md-8 mx-auto">
       <h3>投稿編集</h3>
+      <div>
+        <% if @diary_record.errors.any? %>
+          <% if @diary_record.errors.count > 1 %>
+            <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
+          <% else %>
+            <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
+          <% end %>
+          <ul>
+            <% @diary_record.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
@@ -35,10 +35,14 @@
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
       <div class="form-group">
-        <% @images.each do |image| %>
+        <% @images.each_with_index do |image, index| %>
           <%= f.label image do %>
-          <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
-          <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
+            <% if index == 0 %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio', checked: true %>
+            <% else %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
+            <% end %>
+            <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
           <% end %>
         <% end %>
       </div>

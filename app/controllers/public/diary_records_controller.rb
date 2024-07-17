@@ -47,6 +47,7 @@ class Public::DiaryRecordsController < ApplicationController
     @diary_record = current_user.diary_records.find(params[:id])
 # 画像だけ、タイトルだけなら問題なくupdateされる,同時にやるとデータベースがロックされる（負荷をかけすぎ？）
     if params[:diary_record][:background_image_name].present?
+      @diary_record.background_image.purge
       image_name = params[:diary_record][:background_image_name]
       file_path = Rails.root.join("app", "assets", "images", image_name)
       @diary_record.background_image.attach(io: File.open(file_path), filename: image_name, content_type: 'image/jpeg')

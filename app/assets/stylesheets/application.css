@@ -24,7 +24,7 @@
 .bg-image {
   position: relative;
 }
-
+/*ユーザー名、画像*/
 .overlay-text {
   position: absolute;
   top: 20%;
@@ -33,7 +33,7 @@
   padding: 10px;
   z-index: 2;
 }
-
+/*タイトル*/
 .overlay-text1 {
   position: absolute;
   top: 12%;
@@ -42,7 +42,7 @@
   padding: 10px;
   z-index: 2;
 }
-
+/*内容*/
 .overlay-text2 {
   position: absolute;
   top: 50%;
@@ -51,7 +51,7 @@
   padding: 10px;
   z-index: 2;
 }
-
+/*タグ（カテゴリー）*/
 .overlay-text3 {
   position: absolute;
   top: 88%;
@@ -60,7 +60,7 @@
   padding: 10px;
   z-index: 2;
 }
-
+/*投稿画像*/
 .overlay-image {
   position: absolute;
   top: 15%;
@@ -69,7 +69,7 @@
   padding: 10px;
   z-index: 2;
 }
-
+/*いいねとコメント数*/
 .overlay-text4 {
   position: absolute;
   top: 88%;
