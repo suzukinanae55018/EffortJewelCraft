@@ -34,10 +34,14 @@
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
       <div class="form-group">
-        <% @images.each do |image| %>
+        <% @images.each_with_index do |image, index| %>
           <%= f.label image do %>
-          <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
-          <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
+            <% if index == 0 %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio', checked: true %>
+            <% else %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
+            <% end %>
+            <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
           <% end %>
         <% end %>
       </div>
@@ -54,21 +58,19 @@
   </div>
 </div>
 <script>
-  const textarea = document.getElementById('post-body');
-
-  textarea.addEventListener('input', function() {
-    const text = this.value;
+  $(document).ready(function() {
+  $('#post-body').on('input', function() {
+    const text = $(this).val();
     const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
 
-    this.value = lines.join('\n');
+    $(this).val(lines.join('\n'));
   });
 
-  const textfield = document.getElementById('post-title');
-
-  textfield.addEventListener('input', function() {
-    const text = this.value;
+  $('#post-title').on('input', function() {
+    const text = $(this).val();
     const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
 
-    this.value = lines.join('\n');
+    $(this).val(lines.join('\n'));
   });
+});
 </script>

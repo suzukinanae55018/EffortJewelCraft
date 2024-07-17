@@ -36,11 +36,12 @@
   </div>
 </div>
 <script>
-  const textElements = document.querySelectorAll('.truncate-text');
-    textElements.forEach(element => {
-  const textContent = element.textContent.trim();
-  if (textContent.length > 100) {
-    element.textContent = textContent.slice(0, 100) + '...';
-  }
+  $(document).ready(function() {
+  $('.truncate-text').each(function() {
+    const textContent = $(this).text().trim();
+    if (textContent.length > 124) {
+      $(this).text(textContent.slice(0, 124) + '...');
+    }
   });
+});
 </script>
