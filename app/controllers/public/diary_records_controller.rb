@@ -19,6 +19,7 @@ class Public::DiaryRecordsController < ApplicationController
       flash[:notice] = "投稿が成功しました。"
       redirect_to diary_record_path(@diary_record.id)
     else
+      @images = ['skyblue_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'green_background.jpg', 'yellow_background.jpg']
       flash.now[:alert] = "投稿に失敗しました。"
       render :new
     end
@@ -55,6 +56,7 @@ class Public::DiaryRecordsController < ApplicationController
       flash[:notice] = "投稿の編集に成功しました。"
       redirect_to diary_record_path(@diary_record.id)
     else
+      @images = ['skyblue_background.jpg', 'purple_background.jpg', 'red_background.jpg', 'green_background.jpg', 'yellow_background.jpg']
       flash.now[:alert] = "投稿の編集に失敗しました。"
       render :edit
     end
