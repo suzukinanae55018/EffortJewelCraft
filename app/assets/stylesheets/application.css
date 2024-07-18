@@ -87,10 +87,7 @@
   text-overflow: ellipsis;
   max-width: 7em;
 }
-
+/*bodyの中身*/
 .truncate-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 8;
-  overflow: hidden;
+  word-break: break-word;
 }
