@@ -3,6 +3,9 @@
   <div class="row">
     <div class="col-sm-12 mx-auto">
       <h2>ユーザー一覧</h2>
+      <%= link_to "グループを作成する", new_group_path %>
+      |
+      <%= link_to "グループ一覧", groups_path %>
       <div class="row">
         <% @users.each do |user| %>
           <div class="col-md-2">
@@ -18,9 +21,6 @@
           </div>
         <% end %>
       </div>
-      <%= link_to "グループを作成する", new_group_path %>
-      |
-      <%= link_to "グループ一覧", groups_path %>
       <%= paginate @users %>
     </div>
   </div>
