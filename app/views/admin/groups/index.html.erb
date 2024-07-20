@@ -1,7 +1,7 @@
+<h3 class="mt-3">グループ一覧</h3>
 <table class='table'>
   <thead>
     <tr>
-      <th></th>
       <th>グループ名</th>
       <th>紹介文</th>
       <th>テーマ</th>
@@ -13,8 +13,8 @@
   <tbody>
     <% @groups.each do |group| %>
       <tr>
-        <td><%= image_tag group.get_group_image(100,100), class: 'circle-image' %></td>
-        <td><%= group.name %></td>
+        <td><%= image_tag group.get_group_image(100,100), class: 'circle-image' %><br />
+            <%= group.name %></td>
         <td><%= group.introduction %></td>
         <td><%= group.theme %></td>
         <td><%= group.rule %></td>
