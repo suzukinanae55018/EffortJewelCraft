@@ -30,6 +30,8 @@ class Public::GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @user = User.find(params[:id])
+    @diary_records = @group.users.joins(:diary_records).select('diary_records.*').page(params[:page]).per(10)
   end
 
   def edit

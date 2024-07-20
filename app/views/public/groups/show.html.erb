@@ -10,12 +10,12 @@
   <div style="display: flex;">
   <% @group.users.each_with_index do |user, index| %>
     <% if index == 0 %>
-      <p style="font-weight: bold; color: #191970; font-size: 18px; font-family: Georgia;">参加者名：<%= user.name %></p>
+      <p style="font-weight: bold; color: #191970; font-size: 18px; font-family: Georgia;">参加者名：<%= link_to user.name, user_path(user.id) %></p>
     <% else %>
-      <p>&emsp;<%= user.name %></p>
+      <p>&emsp;<%= link_to user.name, user_path(user.id) %></p>
     <% end %>
   <% end %>
-  </div>
+</div>
 
   <p class="text-left">メンバー数：<%= @group.group_users.count %></p>
 
@@ -43,4 +43,13 @@
     <%= link_to "グループを作成する", new_group_path %> |
     <%= link_to "グループ一覧", groups_path %>
   </div>
+
+  <h5 class="mt-5">グループ投稿一覧</h5>
+  <div class="mt-3">
+  <% @diary_records.each do |diary_record| %>
+    <div><%= link_to diary_record.title, diary_record_path(diary_record.id) %></div>
+    <div><%= diary_record.body %></div>
+  <% end %>
+  </div>
+  <%= paginate @diary_records %>
 </div>
