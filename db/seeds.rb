@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # rails c -e production　でEC2のコンソールから直接入力することも可能
 #
-Admin.create!(
-  email: ENV['ADMIN_EMAIL'],
-  password: ENV['ADMIN_PASSWORD']
-)
+admin = Admin.find_or_create_by!(email: ENV['ADMIN_EMAIL']) do |admin|
+  admin.password = ENV['ADMIN_PASSWORD']
+end
 
 ruby = User.find_or_create_by!(email: ENV['USER_1_EMAIL']) do |user|
   user.name = "Ruby"
