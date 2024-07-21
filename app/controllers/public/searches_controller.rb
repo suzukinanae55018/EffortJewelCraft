@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
     if @range == "User"
       @users = User.looks(params[:search], params[:word]).page(params[:page]).per(15)
     else
-      @diary_records = DiaryRecord.looks(params[:search], params[:word]).page(params[:page]).per(15)
+      @diary_records = DiaryRecord.looks(params[:search], params[:word]).order(created_at: :desc).page(params[:page]).per(15)
     end
   end
 

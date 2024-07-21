@@ -44,7 +44,7 @@
     <%= link_to "グループ一覧", groups_path %>
   </div>
 
-  <h5 class="mt-5">グループ投稿一覧</h5>
+  <h5 class="mt-5">グループメンバー投稿一覧</h5>
   <div class="mt-3">
   <% @diary_records.each do |diary_record| %>
     <div><%= link_to diary_record.title, diary_record_path(diary_record.id) %></div>
