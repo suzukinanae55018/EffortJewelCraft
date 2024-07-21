@@ -27,7 +27,6 @@ class DiaryRecord < ApplicationRecord
     diary_record_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  # 後で背景を選べるようにする
   def get_background_image(width, height)
     unless background_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "touka.png")

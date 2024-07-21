@@ -45,7 +45,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   def update
     @diary_record = current_user.diary_records.find(params[:id])
-# 画像だけ、タイトルだけなら問題なくupdateされる,同時にやるとデータベースがロックされる（負荷をかけすぎ？）
+
     if params[:diary_record][:background_image_name].present?
       @diary_record.background_image.purge
       image_name = params[:diary_record][:background_image_name]
