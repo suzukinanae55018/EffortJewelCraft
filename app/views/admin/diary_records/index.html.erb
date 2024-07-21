@@ -28,7 +28,7 @@
               <td><%= diary_record.body %></td>
               <td><%= diary_record.category %></td>
               <td><%= image_tag diary_record.get_diary_record_image(100, 100) %></td>
-            <!--後で背景を選べるようにする-->
+
             <td><%= image_tag diary_record.get_background_image(100, 100) %></td>
             <td id="comment_counter">
               <%= render "public/diary_record_comments/counter", diary_record: diary_record %>

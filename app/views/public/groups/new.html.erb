@@ -1,9 +1,9 @@
 <div>
   <% if @group.errors.any? %>
     <% if @group.errors.count > 1 %>
-      <p><%= @group.errors.count %>errors prohibited this diary_record from being saved:</p>
+      <p><%= @group.errors.count %>errors prohibited this group from being saved:</p>
     <% else %>
-      <p><%= @group.errors.count %>error prohibited this diary_record from being saved:</p>
+      <p><%= @group.errors.count %>error prohibited this group from being saved:</p>
     <% end %>
     <ul>
       <% @group.errors.full_messages.each do |message| %>

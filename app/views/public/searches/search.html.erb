@@ -1,11 +1,11 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-sm-12 mx-auto">
-      <h1>検索結果一覧</h1>
+      <h3>検索結果一覧</h3>
       <% if @range == "DiaryRecord" %>
-        <h2>DiaryRecords search for "<%= params[:word] %>"</h2>
+        <h3>DiaryRecords search for "<%= params[:word] %>"</h3>
       <% elsif @range == "User" %>
-        <h2>Users search for "<%= params[:word] %>"</h2>
+        <h3>Users search for "<%= params[:word] %>"</h3>
       <% end %>
 
       <div>
