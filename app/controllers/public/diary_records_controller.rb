@@ -28,7 +28,7 @@ class Public::DiaryRecordsController < ApplicationController
   def index
     @diary_records = DiaryRecord.all.order(created_at: :desc).page(params[:page]).per(16)
     if params[:category].present?
-      @diary_records = @diary_records.where(category: params[:category])
+      @diary_records = @diary_records.where("category LIKE ?", "%#{params[:category]}%")
     end
   end
 
