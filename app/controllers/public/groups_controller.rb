@@ -56,11 +56,11 @@ class Public::GroupsController < ApplicationController
   end
 # 自分がオーナーのグループ
   def my_groups
-    @groups = current_user.groups.where(owner: current_user.id)
+    @groups = current_user.groups.where(owner: current_user.id).order(created_at: :desc).page(params[:page]).per(16)
   end
 # 自分が参加しているグループ
   def join_groups
-    @groups = current_user.groups.all
+    @groups = current_user.groups.all.order(created_at: :desc).page(params[:page]).per(16)
   end
 
   private
