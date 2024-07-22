@@ -2,6 +2,7 @@ class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+# オーナー専用許可待ち一覧
   def permits
     @group = Group.find(params[:id])
     @permits = @group.permits.page(params[:page]).per(15)

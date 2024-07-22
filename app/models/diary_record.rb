@@ -18,7 +18,7 @@ class DiaryRecord < ApplicationRecord
       false
     end
   end
-
+# 投稿画像のデフォルトとリサイズ
   def get_diary_record_image(width, height)
     unless diary_record_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "touka.png")
@@ -26,7 +26,7 @@ class DiaryRecord < ApplicationRecord
     end
     diary_record_image.variant(resize_to_limit: [width, height]).processed
   end
-
+# 背景画像のデフォルトとリサイズ
   def get_background_image(width, height)
     unless background_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "touka.png")
@@ -34,7 +34,7 @@ class DiaryRecord < ApplicationRecord
     end
     background_image.variant(resize_to_limit: [width, height]).processed
   end
-
+# 投稿検索用
   def self.looks(search, word)
     if search == "perfect_match"
       @diary_record = DiaryRecord.where("title LIKE?", "#{word}")
