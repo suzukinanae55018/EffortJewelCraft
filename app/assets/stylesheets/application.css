@@ -20,11 +20,11 @@
   border-radius: 50%;
 }
 
-/*投稿内容の配置*/
+/*投稿背景を基準とする*/
 .bg-image {
   position: relative;
 }
-/*ユーザー名、画像*/
+/*ユーザー名、画像を絶対位置*/
 .overlay-text {
   position: absolute;
   top: 20%;
@@ -78,8 +78,16 @@
   padding: 10px;
   z-index: 2;
 }
-
-/*投稿された文字を…に省略*/
+/*投稿日付*/
+.overlay-text5 {
+  position: absolute;
+  top: 92%;
+  left: 88%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  z-index: 2;
+}
+/*投稿者名前の文字を…に省略*/
 .name-truncate {
   display: block;
   overflow: hidden;
@@ -87,7 +95,7 @@
   text-overflow: ellipsis;
   max-width: 7em;
 }
-/*bodyの中身*/
+/*投稿のbodyの中身*/
 .truncate-text {
   word-break: break-word;
 }

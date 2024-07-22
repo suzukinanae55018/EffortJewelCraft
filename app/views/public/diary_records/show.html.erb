@@ -23,6 +23,7 @@
           <%= render "public/favorites/favorite-btn", diary_record: @diary_record %>
         </div>
       </div>
+      <div class="overlay-text5"><%= @diary_record.created_at.strftime("%Y/%m/%d") %></div>
     </div>
     <div class="mb-3 text-right">
       <% if @diary_record.user == current_user %>
