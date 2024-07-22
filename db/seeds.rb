@@ -111,4 +111,50 @@ Group.find_or_create_by!(name: "語学学習組") do |group|
   group.theme = "１日３つ以上単語を覚えよう"
   group.rule = "各自のペースで投稿"
   group.owner = ruby
+  group.users << ruby
+end
+
+Group.find_or_create_by!(name: "Deutsch macht Spaß") do |group|
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/danke.png"), filename: "danke.png")
+  group.introduction = "ドイツ語が好きなグループ"
+  group.theme = "単語を訳してみよう"
+  group.rule = "自由に投稿"
+  group.owner = emerald
+  group.users << emerald
+end
+
+Group.find_or_create_by!(name: "歌が好き。") do |group|
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/mike.png"), filename: "mike.png")
+  group.introduction = "歌うのが好きなグループ"
+  group.theme = "たくさん歌おう"
+  group.rule = "気ままに投稿"
+  group.owner = iolite
+  group.users << iolite
+end
+
+Group.find_or_create_by!(name: "毎日クロッキー") do |group|
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/memo.png"), filename: "memo.png")
+  group.introduction = "画力を向上させたい人集まれ"
+  group.theme = "全身クロッキー一日３体以上目標"
+  group.rule = "毎日投稿、退出自由"
+  group.owner = sapphire
+  group.users << sapphire
+end
+
+Group.find_or_create_by!(name: "エクササイズ") do |group|
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/exercise.png"), filename: "exercise.png")
+  group.introduction = "毎日体を動かしたいグループ"
+  group.theme = "１日２０分以上の運動習慣"
+  group.rule = "投稿、退出自由"
+  group.owner = iolite
+  group.users << iolite
+end
+
+Group.find_or_create_by!(name: "ボイトレ！！") do |group|
+  group.group_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/karaoke.png"), filename: "karaoke.png")
+  group.introduction = "歌唱力向上グループ"
+  group.theme = "１日２０分以上の発声練習"
+  group.rule = "投稿、退出自由"
+  group.owner = iolite
+  group.users << iolite
 end
