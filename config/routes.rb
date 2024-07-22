@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get "about", to: "public/homes#about", as: "about"
   get "policies", to: "public/policies#index", as: "policies"
+  get "my_groups", to: "public/groups#my_groups", as: "my_groups"
+  get "join_groups", to: "public/groups#join_groups", as: "join_groups"
 
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update, :destroy] do

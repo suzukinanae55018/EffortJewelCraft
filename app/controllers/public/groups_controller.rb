@@ -54,6 +54,14 @@ class Public::GroupsController < ApplicationController
     group.destroy
     redirect_to groups_path, notice: "グループの削除に成功しました。"
   end
+# 自分がオーナーのグループ
+  def my_groups
+    @groups = current_user.groups.where(owner: current_user.id)
+  end
+# 自分が参加しているグループ
+  def join_groups
+    @groups = current_user.groups.all
+  end
 
   private
     def group_params
