@@ -12,7 +12,11 @@ class Group < ApplicationRecord
   has_many :users, through: :group_users
 # ユーザーはオーナーか確認
   def is_owned_by?(user)
-    owner.id == user.id
+    if owner && owner.id == user.id
+      true
+    else
+      false
+    end
   end
 # 与えられたユーザーがグループのユーザーに含まれているか
   def includesUser?(user)
