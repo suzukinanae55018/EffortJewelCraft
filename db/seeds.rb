@@ -48,7 +48,7 @@ lapislazuli = User.find_or_create_by!(email: ENV["USER_6_EMAIL"]) do |user|
 end
 
 DiaryRecord.find_or_create_by!(title: "英単語を５つ覚えた") do |diary_record|
-  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record1.jpg"), filename: "diary_record1.jpg")
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record2.png"), filename: "diary_record2.png")
   diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red_background.jpg"), filename: "red_background.jpg")
   diary_record.body = "beat(倒す、鳴らす、鼓動),enough(十分な、十分に),destruction(破壊),upon(その上),rest assured(安心してください)"
   diary_record.category = "英語　語学学習"
@@ -57,17 +57,49 @@ end
 
 DiaryRecord.find_or_create_by!(title: "英単語を４つ覚えた") do |diary_record|
   diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record2.png"), filename: "diary_record2.png")
-  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/purple_background.jpg"), filename: "purple_background.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yellow_background.jpg"), filename: "yellow_background.jpg")
   diary_record.body = "several(いくつかの),compliments(誉め言葉),former(前者),eventuality(最終的に)"
   diary_record.category = "英語　語学学習"
   diary_record.user = ruby
 end
 
+DiaryRecord.find_or_create_by!(title: "リスニング") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record1.jpg"), filename: "diary_record1.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "skyblue_background.jpg")
+  diary_record.body = "吹き替えなしのドラマを３０分観た。「unnecessary...」というのが聞き取れた"
+  diary_record.category = "英語　語学学習　リスニング"
+  diary_record.user = ruby
+end
+
+DiaryRecord.find_or_create_by!(title: "スピーキング") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record1.jpg"), filename: "diary_record1.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/purple_background.jpg"), filename: "purple_background.jpg")
+  diary_record.body = "覚えたセリフを口に出して練習中。「You have paid me several compliments...」"
+  diary_record.category = "英語　語学学習　スピーキング"
+  diary_record.user = ruby
+end
+
 DiaryRecord.find_or_create_by!(title: "クロッキーを１５分やった") do |diary_record|
   diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record3.png"), filename: "diary_record3.png")
-  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "purple_background.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "skyblue_background.jpg")
   diary_record.body = "３種類のポーズを描いた。一体当たり５分。余った時間で影も入れた。立体を意識して描けるように練習中。"
   diary_record.category = "イラスト　クロッキー　デッサン"
+  diary_record.user = sapphire
+end
+
+DiaryRecord.find_or_create_by!(title: "背景線画") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record3.png"), filename: "diary_record3.png")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/green_background.jpg"), filename: "green_background.jpg")
+  diary_record.body = "一点透視図法学習中。お手本を見ながら観察して描く。"
+  diary_record.category = "イラスト"
+  diary_record.user = sapphire
+end
+
+DiaryRecord.find_or_create_by!(title: "気分転換") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record3.png"), filename: "diary_record3.png")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yellow_background.jpg"), filename: "yellow_background.jpg")
+  diary_record.body = "散歩しながら風景の観察。描きたい構図が思いついた！運動不足解消にもなった。"
+  diary_record.category = "イラスト　散歩　自然観察"
   diary_record.user = sapphire
 end
 
@@ -81,11 +113,35 @@ DiaryRecord.find_or_create_by!(title: "ドイツ語を少し覚えた！") do |d
   diary_record.user = emerald
 end
 
+DiaryRecord.find_or_create_by!(title: "ドイツ語で数字０から１０まで") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record4.jpg"), filename: "diary_record4.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "skyblue_background.jpg")
+  diary_record.body = "null,eins,zwei,drei,vier,fünf,sechs,sieben,acht,neun,zehn"
+  diary_record.category = "ドイツ語　語学学習"
+  diary_record.user = emerald
+end
+
+DiaryRecord.find_or_create_by!(title: "ドイツ語で色") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record4.jpg"), filename: "diary_record4.jpg")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yellow_background.jpg"), filename: "yellow_background.jpg")
+  diary_record.body = "rot(赤),blau(青),weiß(白),schwarz(黒),rosa(ピンク),silbern(銀)"
+  diary_record.category = "ドイツ語　語学学習"
+  diary_record.user = emerald
+end
+
 DiaryRecord.find_or_create_by!(title: "筋力トレーニング１時間達成") do |diary_record|
   diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record5.png"), filename: "diary_record5.png")
   diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yellow_background.jpg"), filename: "yellow_background.jpg")
   diary_record.body = "ヒートトレーニング５分×６セット＆腹筋５分×３セット＆腕立て伏せ５分＆プランク５分×２セット　気分爽快！明日も頑張る！！"
   diary_record.category = "筋力トレーニング　筋トレ　腹筋　腕立て伏せ　プランク　ヒートトレーニング"
+  diary_record.user = topaz
+end
+
+DiaryRecord.find_or_create_by!(title: "ヒートトレーニング") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record5.png"), filename: "diary_record5.png")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/yellow_background.jpg"), filename: "yellow_background.jpg")
+  diary_record.body = "ヒートトレーニング５分×１０セット！とても頑張った！！"
+  diary_record.category = "ヒートトレーニング"
   diary_record.user = topaz
 end
 
@@ -101,6 +157,14 @@ DiaryRecord.find_or_create_by!(title: "ボイストレーニング１５分") do
   diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record7.png"), filename: "diary_record7.png")
   diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "skyblue_background.jpg")
   diary_record.body = "動画サイトのトレーニングを１５分。肺活量をもっと鍛えたほうがいいかも？"
+  diary_record.category = "ボイストレーニング　ボイトレ"
+  diary_record.user = iolite
+end
+
+DiaryRecord.find_or_create_by!(title: "ウィスパーボイスとエッジボイスの練習") do |diary_record|
+  diary_record.diary_record_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/diary_record7.png"), filename: "diary_record7.png")
+  diary_record.background_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/skyblue_background.jpg"), filename: "skyblue_background.jpg")
+  diary_record.body = "動画サイトのトレーニングを２０分。息切れすごい。プロの技をもっとよく観察する！"
   diary_record.category = "ボイストレーニング　ボイトレ"
   diary_record.user = iolite
 end
