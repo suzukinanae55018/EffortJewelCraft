@@ -1,0 +1,11 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-12 mt-3'>
+      <%= render 'index', groups: @groups %>
+    </div>
+  </div>
+</div>
+<div class="mt-3">
+  <%= link_to "マイページへ戻る", user_path(current_user) %>
+</div>
+<%= paginate @groups %>

@@ -10,21 +10,15 @@ class Admin::UsersController < ApplicationController
     @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(15)
   end
 
-  def edit
-  end
-
   def destroy
-      user = User.find(params[:id])
-      if user.destroy
-        flash[:notice] = "ユーザーを削除しました。"
-        redirect_to admin_users_path
-      else
-        flash.now[:alert] = "ユーザーの削除に失敗しました。"
-        render :show
-      end
-  end
-
-  def update
+    user = User.find(params[:id])
+    if user.destroy
+      flash[:notice] = "ユーザーを削除しました。"
+      redirect_to admin_users_path
+    else
+      flash.now[:alert] = "ユーザーの削除に失敗しました。"
+      render :show
+    end
   end
 
   private

@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-sm-12 mx-auto">
+    <h3>いいね一覧</h3>
+    <div class="row mt-3">
+        <% @favorite_diary_records.each do |favorite_diary_record| %>
+          <div class="col-6">
+            <div class="bg-image mb-3">
+              <%= image_tag favorite_diary_record.get_background_image(200, 200), style: "width: 100%; border-radius: 10px;" %>
+              <div class="overlay-text">
+                <%= image_tag favorite_diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
+                <span class="name-truncate"><%= favorite_diary_record.user.name %></span>
+              </div>
+              <div class="wrap-content">
+                <div class="overlay-text1"><%= link_to favorite_diary_record.title, diary_record_path(favorite_diary_record.id) %></div>
+                <div class="overlay-text2 truncate-text"><%= favorite_diary_record.body %></div>
+                <div class="overlay-text3">タグ： <%= favorite_diary_record.category %></div>
+                <div class="overlay-image"><%= image_tag favorite_diary_record.get_diary_record_image(120, 120)%></div>
+                <div class="overlay-text4">
+                  <div id="comment_counter">
+                    <%= render "public/diary_record_comments/counter", diary_record: favorite_diary_record %>
+                  </div>
+                  <div id="favorite_buttons_<%= favorite_diary_record.id %>">
+                    <%= render "public/favorites/favorite-btn", diary_record: favorite_diary_record %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <%= paginate @favorite_diary_records %>
+    </div>
+  </div>
+</div>
+<script>
+   $(document).ready(function() {
+  $('.truncate-text').each(function() {
+    const textContent = $(this).text().trim();
+    if (textContent.length > 124) {
+      $(this).text(textContent.slice(0, 124) + '...');
+    }
+  });
+});
+</script>

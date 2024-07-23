@@ -1,0 +1,46 @@
+<div class="row">
+  <% groups.each do |group| %>
+    <div class="col-2">
+      <div class="group-image">
+        <%= image_tag group.get_group_image(100, 100), class: 'circle-image' %>
+      </div>
+      <div class="group-details">
+        <div class="group-name">
+          <%= link_to group.name, group_path(group) %>
+        </div>
+        <div class="group-introduction">
+          <%= group.introduction %>
+        </div>
+        <div class="group-member-count">
+          参加人数：<%= group.group_users.count %>
+        </div>
+        <% if group.is_owned_by?(current_user) %>
+          <div class="group-edit">
+            <%= link_to '編集', edit_group_path(group), class: "group_#{group.id} btn btn-sm btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+  $(document).ready(function() {
+    $('.group-introduction').each(function() {
+      var text = $(this).text();
+      if (text.length > 30) {
+        $(this).text(text.substring(0, 30) + '...');
+      }
+    });
+  });
+
+  $(document).ready(function() {
+  $('.group-name').each(function() {
+    var link = $(this).find('a');
+    var text = link.text();
+    if (text.length > 19) {
+      var newText = text.substring(0, 19) + '...';
+      link.text(newText);
+    }
+  });
+});
+</script>

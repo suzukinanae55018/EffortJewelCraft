@@ -19,12 +19,6 @@
         </tbody>
       </table>
 
-      <div class='row'>
-        <%= link_to edit_admin_user_path(@user), class: "col-12" do %>
-          <div class="btn btn-outline-secondary btn-block mt-4">
-          <i class="fa-solid fa-user-gear"></i>
-          </div>
-        <% end %>
         <div class="col mt-3">
           <% if @user.email != "guest@example.com" %>
             <%= link_to "退会", admin_user_path(@user.id),class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "すべての情報が削除されます。本当に退会しますか？" } %>
@@ -33,7 +27,7 @@
       </div>
     </div>
 
-    <div class="col-md-8 mt-3">
+    <div class="col-md-12 mt-3">
        <table class="table table-hover table-inverse">
         <thead>
           <tr>
@@ -42,7 +36,7 @@
             <th>投稿</th>
             <th>タグ</th>
             <th>画像</th>
-            <th></th>
+            <th>画像背景</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -58,7 +52,7 @@
               <td><%= diary_record.body %></td>
               <td><%= diary_record.category %></td>
               <td><%= image_tag diary_record.get_diary_record_image(100, 100) %></td>
-            <!--後で背景を選べるようにする-->
+
             <td><%= image_tag diary_record.get_background_image(100, 100) %></td>
             <td id="comment_counter">
               <%= render "public/diary_record_comments/counter", diary_record: diary_record %>

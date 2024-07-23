@@ -10,7 +10,7 @@ class Admin::DiaryRecordsController < ApplicationController
     diary_record = DiaryRecord.find(params[:id])
 
     if diary_record.destroy
-      flash[:notice] = "投稿の削除に成功しました"
+      flash[:notice] = "投稿の削除に成功しました。"
       redirect_to request.referer
     else
       flash.now[:alert] = "投稿の削除に失敗しました。"

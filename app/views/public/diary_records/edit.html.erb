@@ -1,43 +1,50 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    <div>
-      <% if @diary_record.errors.any? %>
-        <% if @diary_record.errors.count > 1 %>
-          <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
-        <% else %>
-          <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
-        <% end %>
-        <ul>
-          <% @diary_record.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-
+    <div class="col-sm-12 col-md-8 mx-auto">
       <h3>投稿編集</h3>
+      <div>
+        <% if @diary_record.errors.any? %>
+          <% if @diary_record.errors.count > 1 %>
+            <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
+          <% else %>
+            <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
+          <% end %>
+          <ul>
+            <% @diary_record.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, class: "form-control", id: "post-title" %>
+        <%= f.text_field :title, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :body, "投稿内容" %>
-        <%= f.text_area :body, class: "form-control", id: "post-title" %>
+        <%= f.text_area :body, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :category, "タグ" %>
-        <%= f.text_field :category, class: "form-control", id: "post-title" %>
+        <%= f.text_field :category, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :diary_record_image, "投稿画像" %>
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
-      <!--後で選べるようにする。if文であらかじめ用意した画像を背景色とする-->
       <div class="form-group">
-        <%= f.label :background_image, "背景画像" %>
-        <%= f.file_field :background_image, accept: "image/*", class: "w-100" %>
+        <% @images.each_with_index do |image, index| %>
+          <%= f.label image do %>
+            <% if index == 0 %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio', checked: true %>
+            <% else %>
+              <%= f.radio_button :background_image_name, image, id: image, class: 'input-radio' %>
+            <% end %>
+            <%= image_tag(image, class: 'thumb', style: 'width: 50px; height: 50px; border: 1px solid #ccc;') %>
+          <% end %>
+        <% end %>
       </div>
       <span class="form-group mt-3">
         <%= f.submit '更新する', class: "btn btn-sm btn-success" %>
@@ -50,22 +57,3 @@
     </div>
   </div>
 </div>
-<script>
-  const textarea = document.getElementById('post-body');
-
-  textarea.addEventListener('input', function() {
-    const text = this.value;
-    const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
-
-    this.value = lines.join('\n');
-  });
-
-  const textfield = document.getElementById('post-title');
-
-  textfield.addEventListener('input', function() {
-    const text = this.value;
-    const lines = text.match(/.{1,21}/g);  // 21文字ごとに分割する
-
-    this.value = lines.join('\n');
-  });
-</script>

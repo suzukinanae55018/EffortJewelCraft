@@ -31,7 +31,7 @@
               <% end %>
             </li>
             <li class="nav-item ml-3">
-              <%= link_to '/admin/diary_records/:diary_record_id/diary_record_comments', class: 'nav-link text-dark' do %>
+              <%= link_to admin_diary_record_diary_record_comments_path(:diary_record_id), class: 'nav-link text-dark' do %>
                 <i class="mr-1 fa-regular fa-comments"></i> コメント一覧
               <% end %>
             </li>
@@ -73,6 +73,11 @@
               <% end %>
             </li>
             <li class="nav-item ml-3">
+              <%= link_to favorites_user_path(current_user), class: 'nav-link', style: 'color: #191970;' do %>
+                <i class="fa-regular fa-heart"></i> いいね一覧
+              <% end %>
+            </li>
+            <li class="nav-item ml-3">
               <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', style: 'color: #191970;' do %>
                 <i class="mr-1 fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
@@ -101,12 +106,12 @@
             </li>
           <% end %>
           </ul>
-
-          <%= form_with url: admin_path, method: :get, html: {class: "form-inline my-2 mt-lg-0 ml-auto"} do |f| %>
-          <%= f.text_field :word, class: "form-control mr-sm-2" %>
-          <%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %>
+          <% if user_signed_in? %>
+            <%= form_with url: diary_records_path, method: :get, html: {class: "form-inline my-2 mt-lg-0 ml-auto"} do |f| %>
+            <%= f.text_field :category, class: "form-control mr-sm-2", placeholder: "タグ検索" %>
+            <%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %>
+            <% end %>
           <% end %>
-
         </div>
       </div>
     </div>

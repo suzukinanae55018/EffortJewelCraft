@@ -1,11 +1,12 @@
 class Public::UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_user_favorites, only: [:favorites]
   before_action :ensure_guest_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show]
+  before_action :authenticate_user!, except: [:show, :favorites]
 
   def show
     @user = User.find(params[:id])
-    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(15)
+    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(16)
   end
 
   def edit
@@ -25,36 +26,43 @@ class Public::UsersController < ApplicationController
   end
 
   def destroy
-      user = User.find(params[:id])
-      if user.destroy
-        flash[:notice] = "ユーザーを削除しました。"
-        redirect_to root_path
-      else
-        flash.now[:alert] = "ユーザーの削除に失敗しました。"
-        render :edit
-      end
+    user = User.find(params[:id])
+    if user.destroy
+      flash[:notice] = "ユーザーを削除しました。"
+      redirect_to new_user_registration_path
+    else
+      flash.now[:alert] = "ユーザーの削除に失敗しました。"
+      render :edit
+    end
   end
 
   def index
     @users = User.all.order(created_at: :desc).page(params[:page]).per(15)
-    # if params[:name].present?
-    #   @users = @users.where(name: params[:name])
-    # end
+  end
 
-    # if params[:category_id].present?
-
-    # end
+  # ユーザーがいいねした投稿の一覧
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:diary_record_id)
+    @favorite_diary_records = DiaryRecord.where(id: favorites).page(params[:page]).per(16)
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :introduction, :profile_image)
+      params.require(:user).permit(:name, :introduction, :profile_image, :email)
     end
 
     def is_matching_login_user
       user = User.find(params[:id])
       unless user.id == current_user.id
         redirect_to user_path(current_user), notice: "他のユーザーのプロフィール編集はできません。"
+      end
+    end
+
+    def is_matching_login_user_favorites
+      user = User.find(params[:id])
+      unless user.id == current_user.id
+        redirect_to diary_records_path, notice: "他のユーザーのいいね一覧は閲覧できません。"
       end
     end
 

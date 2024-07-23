@@ -13,7 +13,7 @@
 
   <body class="d-flex flex-column vh-100" style="background-image: url('<%= image_url("blue_jewel.jpg") %>');">
     <%= render 'layouts/header' %>
-    <main class="mb-auto background">
+    <main class="mb-auto">
       <div class="container" style="position: relative;">
         <% if notice %>
           <p class="m-5 alert alert-primary alert-dismissible mx-auto text-center" style="box-shadow: 0px 5px 12px #cad4e2, -6px -6px 12px #fff">
@@ -32,7 +32,7 @@
           </p>
         <% end %>
       <%= yield %>
-      <p style="height: 100px;"></p>
+      <p style="height: 70px;"></p>
     </main>
     <%= render 'layouts/footer' %>
   </body>
