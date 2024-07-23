@@ -40,7 +40,7 @@ class Public::UsersController < ApplicationController
     @users = User.all.order(created_at: :desc).page(params[:page]).per(15)
   end
 
-# ユーザーがいいねした投稿の一覧
+  # ユーザーがいいねした投稿の一覧
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:diary_record_id)

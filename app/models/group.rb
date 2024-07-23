@@ -10,7 +10,7 @@ class Group < ApplicationRecord
   has_many :permits, dependent: :destroy
   belongs_to :owner, class_name: "User"
   has_many :users, through: :group_users
-# ユーザーはオーナーか確認
+  # ユーザーはオーナーか確認
   def is_owned_by?(user)
     if owner && owner.id == user.id
       true
@@ -18,11 +18,11 @@ class Group < ApplicationRecord
       false
     end
   end
-# 与えられたユーザーがグループのユーザーに含まれているか
+  # 与えられたユーザーがグループのユーザーに含まれているか
   def includesUser?(user)
     group_users.exists?(user_id: user.id)
   end
-# グループ画像のデフォルトとリサイズ
+  # グループ画像のデフォルトとリサイズ
   def get_group_image(width, height)
     unless group_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "user1.png")

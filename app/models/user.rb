@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :permits, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
-# プロフィール画像のデフォルトとリサイズ
+  # プロフィール画像のデフォルトとリサイズ
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join("app", "assets", "images", "user1.png")
@@ -26,7 +26,7 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-# ゲストユーザー用
+  # ゲストユーザー用
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest

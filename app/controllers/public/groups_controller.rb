@@ -2,7 +2,7 @@ class Public::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
-# オーナー専用許可待ち一覧
+  # オーナー専用許可待ち一覧
   def permits
     @group = Group.find(params[:id])
     @permits = @group.permits.page(params[:page]).per(15)
@@ -53,11 +53,11 @@ class Public::GroupsController < ApplicationController
     group.destroy
     redirect_to groups_path, notice: "グループの削除に成功しました。"
   end
-# 自分がオーナーのグループ
+  # 自分がオーナーのグループ
   def my_groups
     @groups = current_user.groups.where(owner: current_user.id).order(created_at: :desc).page(params[:page]).per(16)
   end
-# 自分が参加しているグループ
+  # 自分が参加しているグループ
   def join_groups
     @groups = current_user.groups.all.order(created_at: :desc).page(params[:page]).per(16)
   end
