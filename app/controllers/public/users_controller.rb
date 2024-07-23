@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(16)
+    @diary_records = @user.diary_records.order(created_at: :desc).page(params[:page]).per(14)
   end
 
   def edit
@@ -37,14 +37,14 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order(created_at: :desc).page(params[:page]).per(15)
+    @users = User.all.order(created_at: :desc).page(params[:page]).per(14)
   end
 
   # ユーザーがいいねした投稿の一覧
   def favorites
     @user = User.find(params[:id])
     favorites = Favorite.where(user_id: @user.id).pluck(:diary_record_id)
-    @favorite_diary_records = DiaryRecord.where(id: favorites).page(params[:page]).per(16)
+    @favorite_diary_records = DiaryRecord.where(id: favorites).page(params[:page]).per(14)
   end
 
   private
