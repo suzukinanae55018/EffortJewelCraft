@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5">
-    <h3>Sign up</h3>
+    <h3>新規登録</h3>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
@@ -19,7 +19,7 @@
       <div class="field mb-2">
         <%= f.label :password %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        (<%= @minimum_password_length %> 文字以上)
         <% end %><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style: "width: 100%" %>
       </div>
@@ -30,7 +30,7 @@
       </div>
 
       <div class="actions mb-2">
-        <%= f.submit "Sign up", class: "btn btn-default mb-3 signup-button" %>
+        <%= f.submit "新規登録", class: "btn btn-default mb-3 signup-button" %>
       </div>
     <% end %>
 

@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-5">
-    <h2>Log in (Admin)</h2>
+    <h3>管理者ログイン</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field mb-2">
@@ -22,7 +22,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-default mb-3 login-button" %>
+        <%= f.submit "管理者としてログイン", class: "btn btn-default mb-3 login-button" %>
       </div>
     <% end %>
 
