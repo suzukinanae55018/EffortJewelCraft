@@ -45,6 +45,4 @@ class Group < ApplicationRecord
       @group = Group.all
     end
   end
-
-
 end

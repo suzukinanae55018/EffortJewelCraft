@@ -9,7 +9,7 @@ class Public::NotificationsController < ApplicationController
     when "GroupUser"
       redirect_to group_path(notification.notifiable.group)
     else
-      redirect_to user_path(notification.notifiable.user)
+      redirect_to permits_path(notification.notifiable.group.id)
     end
   end
 end

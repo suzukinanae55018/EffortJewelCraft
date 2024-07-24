@@ -108,11 +108,12 @@
             </li>
           <% end %>
           </ul>
+          <!--通知機能-->
           <% if user_signed_in? %>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Notification
-              <span class="badge badge-danger"><%= current_user.notifications.where(read: false).count %></span>
+          <div class="dropdown ml-4" style="text-align: left;">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              通知
+              <span class="badge" style="color: red;  border: 2px solid red; background-color: transparent;"><%= current_user.notifications.where(read: false).count %></span>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <% if current_user.notifications.where(read: false).any? %>
