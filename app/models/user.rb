@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  has_many :notifications, dependent: :destroy
   has_many :diary_records, dependent: :destroy
   has_many :diary_record_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

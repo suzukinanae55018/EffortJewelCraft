@@ -38,6 +38,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :notifications, only: [:update]
+
     resources :diary_records, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
       resources :diary_record_comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy]

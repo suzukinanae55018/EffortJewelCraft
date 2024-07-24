@@ -51,6 +51,8 @@
               <% end %>
             </li>
 
+
+
           <% elsif user_signed_in? %>
             <li class="nav-item ml-3">
               <%= link_to user_path(current_user), class: 'nav-link', style: 'color: #191970;' do %>
@@ -107,10 +109,22 @@
           <% end %>
           </ul>
           <% if user_signed_in? %>
-            <%= form_with url: diary_records_path, method: :get, html: {class: "form-inline my-2 mt-lg-0 ml-auto"} do |f| %>
-            <%= f.text_field :category, class: "form-control mr-sm-2", placeholder: "タグ検索" %>
-            <%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %>
-            <% end %>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Notification
+              <span class="badge badge-danger"><%= current_user.notifications.where(read: false).count %></span>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <% if current_user.notifications.where(read: false).any? %>
+                <small class="dropdown-item disabled">直近5件の未読の通知を表示しています</small>
+                <% current_user.notifications.where(read: false).limit(5).order(created_at: :desc).each do |notification| %>
+                  <%= link_to notification_message(notification), notification_path(notification), method: :patch, class: "dropdown-item" %>
+                <% end %>
+              <% else %>
+                <span class="dropdown-item disabled">未読の通知はありません</span>
+              <% end %>
+            </div>
+          </div>
           <% end %>
         </div>
       </div>
