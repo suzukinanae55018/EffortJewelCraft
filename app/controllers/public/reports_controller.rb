@@ -18,7 +18,7 @@ class Public::ReportsController < ApplicationController
     else
       @report = Report.new
       @diary_record = DiaryRecord.find(params[:diary_record_id])
-      flash[:alert] = "正しい内容を入力してください"
+      flash[:alert] = "100文字以内で報告内容を入力してください"
       render "new"
     end
   end
