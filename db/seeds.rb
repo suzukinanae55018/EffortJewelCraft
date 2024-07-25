@@ -13,36 +13,42 @@ end
 
 ruby = User.find_or_create_by!(email: ENV["USER_1_EMAIL"]) do |user|
   user.name = "Ruby"
+  user.introduction = "語学に興味があります"
   user.password = ENV["USER_1_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename: "sample-user1.png")
 end
 
 sapphire = User.find_or_create_by!(email: ENV["USER_2_EMAIL"]) do |user|
   user.name = "Sapphire"
+  user.introduction = "イラスト勉強中…"
   user.password = ENV["USER_2_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename: "sample-user2.png")
 end
 
 emerald = User.find_or_create_by!(email: ENV["USER_3_EMAIL"]) do |user|
   user.name = "Emerald"
+  user.introduction = "ドイツ行きたい"
   user.password = ENV["USER_3_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.png"), filename: "sample-user3.png")
 end
 
 topaz = User.find_or_create_by!(email: ENV["USER_4_EMAIL"]) do |user|
   user.name = "Topaz"
+  user.introduction = "筋肉こそ全て。"
   user.password = ENV["USER_4_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.png"), filename: "sample-user4.png")
 end
 
 iolite = User.find_or_create_by!(email: ENV["USER_5_EMAIL"]) do |user|
   user.name = "Iolite"
+  user.introduction = "歌が好き"
   user.password = ENV["USER_5_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.png"), filename: "sample-user5.png")
 end
 
 lapislazuli = User.find_or_create_by!(email: ENV["USER_6_EMAIL"]) do |user|
   user.name = "Lapislazuli"
+  user.introduction = "Hello!!"
   user.password = ENV["USER_6_PASSWORD"]
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.png"), filename: "sample-user6.png")
 end
