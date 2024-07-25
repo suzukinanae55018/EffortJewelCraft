@@ -46,6 +46,11 @@
               <% end %>
             </li>
             <li class="nav-item ml-3">
+              <%= link_to admin_reports_path, class: 'nav-link text-dark' do %>
+                <i class="fa-solid fa-triangle-exclamation"></i> 報告一覧
+              <% end %>
+            </li>
+            <li class="nav-item ml-3">
               <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <i class="mr-1 fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>

@@ -7,6 +7,7 @@ class DiaryRecord < ApplicationRecord
   has_one_attached :background_image
 
   belongs_to :user
+  has_many :reports, dependent: :destroy
   has_many :diary_record_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user

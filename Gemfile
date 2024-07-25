@@ -77,3 +77,4 @@ gem "net-imap"
 gem "jquery-rails"
 
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
+gem "enum_help"

@@ -33,6 +33,9 @@
       <span><%= link_to "削除", diary_record_path(@diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></span>
       <% end %>
     </div>
+
+    <div class="col-10"><%= link_to "報告する" ,new_diary_record_reports_path(@diary_record), class: "text-dark" %></div>
+
     <!--非同期化-->
     <div id="comment_index">
       <%= render "public/diary_record_comments/index", diary_record: @diary_record %>
