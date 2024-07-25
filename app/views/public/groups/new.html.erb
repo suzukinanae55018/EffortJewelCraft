@@ -4,11 +4,8 @@
       <h3>グループ作成</h3>
     <div>
       <% if @group.errors.any? %>
-        <% if @group.errors.count > 1 %>
-          <p><%= @group.errors.count %>errors prohibited this group from being saved:</p>
-        <% else %>
-          <p><%= @group.errors.count %>error prohibited this group from being saved:</p>
-        <% end %>
+        <% @group.errors.count %>
+          <p><%= @group.errors.count %>件のエラーにより、このグループの作成に失敗しました</p>
         <ul>
           <% @group.errors.full_messages.each do |message| %>
             <li><%= message %></li>

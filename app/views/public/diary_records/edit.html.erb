@@ -4,11 +4,8 @@
       <h3>投稿編集</h3>
       <div>
         <% if @diary_record.errors.any? %>
-          <% if @diary_record.errors.count > 1 %>
-            <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
-          <% else %>
-            <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
-          <% end %>
+          <% @diary_record.errors.count %>
+            <p><%= @diary_record.errors.count %>件のエラーにより、この投稿の編集に失敗しました</p>
           <ul>
             <% @diary_record.errors.full_messages.each do |message| %>
               <li><%= message %></li>
