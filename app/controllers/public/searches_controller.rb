@@ -2,6 +2,7 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
+    # view側で:rangeを作成
     @range = params[:range]
 
     if @range == "ユーザー"

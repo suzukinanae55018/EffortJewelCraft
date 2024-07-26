@@ -6,7 +6,7 @@
       <%= "EffortJewelCraft" %>
       </span>
       </a>
-      <!--必要に応じて反映する-->
+      <!--ログインユーザー表記は必要に応じて反映する-->
       <%# if user_signed_in? %>
         <!--<p class="mx-4 text-dark"><%#= current_user.name %></p>-->
       <%# elsif admin_signed_in? %>
@@ -18,7 +18,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <div class="d-flex flex-column w-100">
           <ul class="navbar-nav my-2 ml-auto flex-row">
-
+          <!--管理者側-->
           <% if admin_signed_in? %>
             <li class="nav-item ml-3">
               <%= link_to admin_path, class: 'nav-link text-dark' do %>
@@ -55,9 +55,7 @@
                 <i class="mr-1 fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
             </li>
-
-
-
+          <!--ログインユーザー側-->
           <% elsif user_signed_in? %>
             <li class="nav-item ml-3">
               <%= link_to user_path(current_user), class: 'nav-link', style: 'color: #191970;' do %>
@@ -89,7 +87,7 @@
                 <i class="mr-1 fa-solid fa-right-from-bracket"></i> ログアウト
               <% end %>
             </li>
-
+          <!--ログインしていない場合-->
           <% else %>
             <li class="nav-item ml-3">
               <%= link_to about_path, class: 'nav-link', style: 'color: #191970;' do %>

@@ -33,7 +33,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*タイトル*/
+/*タイトルを絶対位置で指定*/
 .overlay-text1 {
   position: absolute;
   top: 12%;
@@ -42,7 +42,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*内容*/
+/*内容を絶対位置で指定*/
 .overlay-text2 {
   position: absolute;
   top: 50%;
@@ -51,7 +51,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*タグ（カテゴリー）*/
+/*タグ（カテゴリー）を絶対位置で指定*/
 .overlay-text3 {
   position: absolute;
   top: 88%;
@@ -60,7 +60,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*投稿画像*/
+/*投稿画像を絶対位置で指定*/
 .overlay-image {
   position: absolute;
   top: 15%;
@@ -69,7 +69,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*いいねとコメント数*/
+/*いいねとコメント数を絶対位置で指定*/
 .overlay-text4 {
   position: absolute;
   top: 88%;
@@ -78,7 +78,7 @@
   padding: 10px;
   z-index: 2;
 }
-/*投稿日付*/
+/*投稿日付を絶対位置で指定*/
 .overlay-text5 {
   position: absolute;
   top: 92%;
@@ -95,7 +95,7 @@
   text-overflow: ellipsis;
   max-width: 7em;
 }
-/*投稿のbodyの中身*/
+/*投稿のbodyの中身を折り返す*/
 .truncate-text {
   word-break: break-word;
 }

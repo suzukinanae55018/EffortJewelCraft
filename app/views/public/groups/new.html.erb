@@ -2,18 +2,18 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
       <h3>グループ作成</h3>
-    <div>
-      <% if @group.errors.any? %>
-        <% @group.errors.count %>
-          <p><%= @group.errors.count %>件のエラーにより、このグループの作成に失敗しました</p>
-        <ul>
-          <% @group.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-        <%= render 'form', group: @group %>
+      <div>
+        <% if @group.errors.any? %>
+          <% @group.errors.count %>
+            <p><%= @group.errors.count %>件のエラーにより、このグループの作成に失敗しました</p>
+          <ul>
+            <% @group.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <%= render 'form', group: @group %>
     </div>
   </div>
 </div>

@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-sm-12 mx-auto">
       <h3>検索結果一覧</h3>
-      <% if @range == "DiaryRecord" %>
-        <h3>DiaryRecords search for "<%= params[:word] %>"</h3>
-      <% elsif @range == "User" %>
-        <h3>Users search for "<%= params[:word] %>"</h3>
+      <% if @range == "投稿" %>
+        <h3>"<%= params[:word] %>"で投稿を検索</h3>
+      <% elsif @range == "ユーザー" %>
+        <h3>"<%= params[:word] %>"でユーザーを検索</h3>
       <% end %>
 
       <div>

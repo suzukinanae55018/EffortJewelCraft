@@ -12,7 +12,7 @@
 
         <div class="overlay-text1"><%= @diary_record.title %></div>
         <div class="overlay-text2"><%= @diary_record.body %></div>
-        <div class="overlay-text3"><%= @diary_record.category %></div>
+        <div class="overlay-text3">タグ：<%= @diary_record.category %></div>
         <div class="overlay-image"><%= image_tag @diary_record.get_diary_record_image(200, 200)%></div>
 
         <div class="overlay-text5"><%= @diary_record.created_at.strftime("%Y/%m/%d") %></div>
