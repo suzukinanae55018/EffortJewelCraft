@@ -1,9 +1,9 @@
 class Public::ReportsController < ApplicationController
-   before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def new
-   @report = Report.new
-   @diary_record = DiaryRecord.find(params[:diary_record_id])
+    @report = Report.new
+    @diary_record = DiaryRecord.find(params[:diary_record_id])
   end
 
   def create
@@ -22,6 +22,7 @@ class Public::ReportsController < ApplicationController
       render "new"
     end
   end
+  
   private
 
   def report_params
