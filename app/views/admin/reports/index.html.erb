@@ -40,6 +40,7 @@
             <td><%= report.user.name %></td>
             <td><%= report.report %></td>
             <td><%= link_to "削除", admin_diary_record_path(report.diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
+            <td><%= link_to "問題なし", admin_report_path(report.diary_record.id), method: :patch, data: { confirm: "問題なしとして処理しますか？" }, class: "btn btn-sm btn-primary" %></td>
           </tr>
         </tbody>
       </table>
