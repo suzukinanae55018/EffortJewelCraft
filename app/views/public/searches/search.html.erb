@@ -10,7 +10,7 @@
 
       <div>
         <!--検索対象モデルがUser -->
-        <% if @range == "User" %>
+        <% if @range == "ユーザー" %>
           <div class="row">
             <% @users.order(created_at: :desc).each do |user| %>
               <div class="col-md-2">
@@ -28,7 +28,7 @@
           </div>
           <%= paginate @users %>
 
-        <% elsif @range == "DiaryRecord" %>
+        <% elsif @range == "投稿" %>
           <div class="row">
             <%= render "public/diary_records/index", diary_records: @diary_records %>
           </div>
