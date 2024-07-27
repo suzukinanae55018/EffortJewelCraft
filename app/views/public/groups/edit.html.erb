@@ -14,7 +14,7 @@
         <% end %>
       </div>
       <%= render 'form', group: @group %>
-      <%=link_to "グループ一覧へ",groups_path %>
+      <%=link_to "グループ一覧へ",groups_path,data: {"turbolinks"=>false} %>
     </div>
   </div>
 </div>

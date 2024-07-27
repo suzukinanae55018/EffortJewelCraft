@@ -55,7 +55,7 @@ class Public::GroupsController < ApplicationController
   end
   # 自分がオーナーのグループ一覧
   def my_groups
-    @groups = current_user.groups.where(owner: current_user.id).order(created_at: :desc).page(params[:page]).per(14)
+    @groups = Group.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(14)
   end
   # 自分が参加しているグループ一覧
   def join_groups
