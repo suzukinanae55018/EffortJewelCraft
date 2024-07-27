@@ -25,6 +25,9 @@
       </div>
       <div class="overlay-text5"><%= @diary_record.created_at.strftime("%Y/%m/%d") %></div>
     </div>
+
+    <div class="mb-3 text-right"><%= link_to "管理者に報告する" ,new_diary_record_reports_path(@diary_record), class: "text-dark" %></div>
+
     <div class="mb-3 text-right">
       <% if @diary_record.user == current_user %>
       <span><%= link_to "編集", edit_diary_record_path(@diary_record), class: "btn btn-sm btn-success" %></span>
@@ -33,9 +36,6 @@
       <span><%= link_to "削除", diary_record_path(@diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></span>
       <% end %>
     </div>
-
-    <div class="mb-3 text-right"><%= link_to "管理者に報告する" ,new_diary_record_reports_path(@diary_record), class: "text-dark" %></div>
-
     <!--非同期化-->
     <div id="comment_index">
       <%= render "public/diary_record_comments/index", diary_record: @diary_record %>
