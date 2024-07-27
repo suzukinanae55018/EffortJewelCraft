@@ -10,7 +10,7 @@
         <% @users.each do |user| %>
           <div class="col-md-2">
             <div class="name-truncate">
-              <%= link_to user_path(user) do %>
+              <%= link_to user_path(user),data: {"turbolinks"=>false} do %>
                 <%= image_tag user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                 <%= user.name %>
               <% end %>

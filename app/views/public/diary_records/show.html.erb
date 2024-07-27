@@ -5,7 +5,7 @@
     <!--画像サイズが他と違うため_indexをrenderしてこないこと-->
     <div class="bg-image mb-3">
       <%= image_tag @diary_record.get_background_image(200, 200), style: "width: 100%; border-radius: 10px;"  %>
-      <div class="overlay-text"><%= link_to user_path(@user.id) do %>
+      <div class="overlay-text"><%= link_to user_path(@user.id),data: {"turbolinks"=>false} do %>
              <%= image_tag @diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
              <%= @diary_record.user.name %>
            <% end %>

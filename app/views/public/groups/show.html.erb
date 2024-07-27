@@ -10,9 +10,9 @@
   <div style="display: flex;">
   <% @group.users.each_with_index do |user, index| %>
     <% if index == 0 %>
-      <p style="font-weight: bold; color: #191970; font-size: 18px; font-family: Georgia;">参加者名：<%= link_to user.name, user_path(user.id) %></p>
+      <p style="font-weight: bold; color: #191970; font-size: 18px; font-family: Georgia;">参加者名：<%= link_to user.name, user_path(user.id),data: {"turbolinks"=>false} %></p>
     <% else %>
-      <p>&emsp;<%= link_to user.name, user_path(user.id) %></p>
+      <p>&emsp;<%= link_to user.name, user_path(user.id),data: {"turbolinks"=>false} %></p>
     <% end %>
   <% end %>
   </div>
