@@ -18,3 +18,14 @@
   </div>
 </div>
 <%= paginate @groups %>
+<script>
+$(document).ready(function() {
+  $('.col-xl-12').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-xl-12').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
+  });
+});
+</script>

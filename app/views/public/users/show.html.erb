@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mx-auto">
+    <div class="col-12 mx-auto">
       <% if @user == current_user %>
         <h3 class="mt-3">マイページ</h3>
       <% else %>
@@ -34,7 +34,7 @@
 </div>
 <!--投稿内容は124文字以上は…表記-->
 <script>
-   $(document).ready(function() {
+$(document).ready(function() {
   $('.truncate-text').each(function() {
     const textContent = $(this).text().trim();
     if (textContent.length > 124) {
