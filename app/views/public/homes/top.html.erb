@@ -6,13 +6,13 @@
       <p class="mb-4" style="font-family: Georgia, monospace; color: #191970;">多くの人々と共有することができます</p>
 
         <div class="top-button">
-          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-default mb-3 guest-button", method: :post %>
+          <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-default mb-3 guest-button", method: :post, style: "height: 50px;" %>
         </div>
         <div class="top-button">
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-default mb-3 login-button" %>
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-default mb-3 login-button", style: "height: 50px;" %>
         </div>
         <div class="top-button">
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-default mb-3 signup-button" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-default mb-3 signup-button", style: "height: 50px;" %>
         </div>
         <!--<div class="top-button">-->
         <!--  <%#= link_to "管理者としてログイン", new_admin_session_path, class: "btn btn-default admin-button" %>-->
@@ -20,3 +20,23 @@
     </div>
   </div>
 </div>
+<script>
+  // 透明から不透明になるアニメーション
+  $("h1").css("opacity", 0).animate({opacity: 1}, 800);
+  $("p").css("opacity", 0).delay(500).animate({opacity: 1}, 800);
+  $(".top-button").css("opacity", 0).delay(800).animate({opacity: 1}, 900);
+
+  $('.top-button').on('mouseenter', function(){
+  $(this).stop().animate({
+    'font-size': '24px',
+    'padding': '10px'
+  }, 300); // アニメーションの時間を指定
+  });
+
+  $('.top-button').on('mouseleave', function(){
+    $(this).stop().animate({
+      'font-size': '',
+      'padding': ''
+    }, 300); // アニメーションの時間を指定
+  });
+</script>

@@ -1,13 +1,23 @@
 <% if diary_record.favorited_by?(current_user) %>
-  <p>
+  <div class="heart">
   <%= link_to diary_record_favorite_path(diary_record), method: :delete, remote: true do %>
      <span style="color: red;">♥<%= diary_record.favorites.count %></span>
   <% end %>
-  </p>
+  </div>
 <% else %>
-  <p>
+  <div class="heart">
   <%= link_to diary_record_favorite_path(diary_record), method: :post, remote: true do %>
     ♡<%= diary_record.favorites.count %>
   <% end %>
-  </p>
+  </div>
 <% end %>
+
+<script>
+  // いいねを弾ませる
+  $(".heart").click(function() {
+  $(this).css("animation", "bounce 1s");
+  setTimeout(function() {
+    $(".heart").css("animation", "");
+  }, 1000);
+});
+</script>
