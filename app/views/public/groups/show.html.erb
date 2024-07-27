@@ -40,8 +40,8 @@
     </div>
   <% end %>
   <div class="mt-3">
-    <%= link_to "グループを作成する", new_group_path %> |
-    <%= link_to "グループ一覧", groups_path %>
+    <%= link_to "グループを作成する", new_group_path,data: {"turbolinks"=>false} %> |
+    <%= link_to "グループ一覧", groups_path,data: {"turbolinks"=>false} %>
   </div>
 
   <h5 class="mt-5">グループメンバー投稿一覧</h5>

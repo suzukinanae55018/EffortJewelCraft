@@ -7,7 +7,7 @@
       <span class="name-truncate"><%= diary_record.user.name %></span>
     </div>
     <div class="wrap-content">
-      <div class="overlay-text1"><%= link_to diary_record.title, diary_record_path(diary_record.id) %></div>
+      <div class="overlay-text1"><%= link_to diary_record.title, diary_record_path(diary_record.id),data: {"turbolinks"=>false} %></div>
       <div class="overlay-text2 truncate-text"><%= diary_record.body %></div>
       <div class="overlay-text3">タグ： <%= diary_record.category %></div>
       <div class="overlay-image"><%= image_tag diary_record.get_diary_record_image(120, 120)%></div>
