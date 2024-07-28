@@ -32,16 +32,16 @@
   width: 100%;
   text-shadow: 2px 2px 4px #fff;
 }
-
-.admin-button {
-  background-image: image-url("purple_background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  box-shadow: 2px 2px 8px #888888;
-  width: 100%;
-  text-shadow: 2px 2px 4px #fff;
-}
+//管理者ログインリンクをトップページに貼るときに
+// .admin-button {
+//   background-image: image-url("purple_background.jpg");
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+//   box-shadow: 2px 2px 8px #888888;
+//   width: 100%;
+//   text-shadow: 2px 2px 4px #fff;
+// }
 
 .top-button {
   display: flex;

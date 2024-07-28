@@ -1,16 +1,16 @@
 <%= render 'public/searches/search' %>
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 mx-auto">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 mx-auto">
       <h2>ユーザー一覧</h2>
-      <%= link_to "グループを作成する", new_group_path %>
+      <%= link_to "グループを作成する", new_group_path,data: {"turbolinks"=>false} %>
       |
-      <%= link_to "グループ一覧", groups_path %>
+      <%= link_to "グループ一覧", groups_path,data: {"turbolinks"=>false} %>
       <div class="row">
         <% @users.each do |user| %>
           <div class="col-md-2">
             <div class="name-truncate">
-              <%= link_to user_path(user) do %>
+              <%= link_to user_path(user),data: {"turbolinks"=>false} do %>
                 <%= image_tag user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                 <%= user.name %>
               <% end %>
@@ -21,17 +21,28 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @users %>
+      <%= paginate @users, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
+<!--ユーザー紹介文は35文字以上は…表記-->
 <script>
-   $(document).ready(function() {
+$(document).ready(function() {
   $('.user-introduction').each(function() {
     const textContent = $(this).text().trim();
     if (textContent.length > 35) {
       $(this).text(textContent.slice(0, 35) + '...');
     }
+  });
+});
+
+$(document).ready(function() {
+  $('.col-xl-12').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-xl-12').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
   });
 });
 </script>

@@ -1,11 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="mt-4 mx-auto col-12 col-sm-10 col-lg-8" style="font-size: 18px;">
+    <div class="mt-4 mx-auto col-8" style="font-size: 18px;">
     <p>このサイトでは、あなたの日々の努力や結果を記録として残すことができます。</p>
     <p>あなただけの頑張りの記録を作り、多くの人と共有することができます。</p>
     <p>気になるユーザーや投稿を検索したり、グループをつくることも可能です。</p>
     <p>日常の小さな努力も投稿し、あなただけの宝石箱をつくりましょう！</p>
-    <img src="<%= image_url("jewel_1.jpg") %>" width="100%" height="350" alt="画像">
+    <img src="<%= image_url("jewel_1.jpg") %>" width="100%" height="350" alt="画像"style="border-radius: 10%;">
     </div>
   </div>
 </div>
+<script>
+  $("p").css("opacity", 0).animate({opacity: 1}, 800);
+</script>

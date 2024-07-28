@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get "admin" => "admin/homes#top"
   namespace :admin do
+    resources :reports, only: [:index, :update]
     resources :users, only: [:index, :show, :destroy]
     resources :groups, only: [:index, :destroy]
     resources :diary_records, only: [:index, :destroy] do
@@ -38,9 +39,13 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :notifications, only: [:update]
+
     resources :diary_records, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
       resources :diary_record_comments, only: [:create, :destroy]
       resource :favorite, only: [:create, :destroy]
+      resource :reports, only: [:new, :create]
+      get :complete, on: :member
     end
 
     resources :groups, only: [:new, :create, :index, :show, :edit, :destroy, :update]  do

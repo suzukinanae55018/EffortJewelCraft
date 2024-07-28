@@ -1,22 +1,30 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto mt-3">
-    <div>
-      <% if @group.errors.any? %>
-        <% if @group.errors.count > 1 %>
-          <p><%= @group.errors.count %>errors prohibited this group from being saved:</p>
-        <% else %>
-          <p><%= @group.errors.count %>error prohibited this group from being saved:</p>
-        <% end %>
-        <ul>
-          <% @group.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
+    <div class="col-8 mx-auto mt-3">
       <h3>グループ作成</h3>
-        <%= render 'form', group: @group %>
+      <div>
+        <% if @group.errors.any? %>
+          <% @group.errors.count %>
+            <p><%= @group.errors.count %>件のエラーにより、このグループの作成に失敗しました</p>
+          <ul>
+            <% @group.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <%= render 'form', group: @group %>
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('.col-8').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-8').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
+  });
+});
+</script>

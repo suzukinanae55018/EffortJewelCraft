@@ -2,7 +2,7 @@ class Public::DiaryRecordsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   def new
-    # 画像を選べるようにする
+    # 画像を準備した中から選べるようにする
     @diary_record = DiaryRecord.new
     @images = ["skyblue_background.jpg", "purple_background.jpg", "red_background.jpg", "green_background.jpg", "yellow_background.jpg"]
   end
@@ -10,7 +10,7 @@ class Public::DiaryRecordsController < ApplicationController
   def create
     @diary_record = DiaryRecord.new(diary_record_params)
     @diary_record.user_id = current_user.id
-
+    # diary_recordに、viewで作ったbackground_image_name（文字列）を入れる、file_pathに代入してbackground_imageとしてattach
     image_name = params[:diary_record][:background_image_name]
     file_path = Rails.root.join("app", "assets", "images", image_name)
     @diary_record.background_image.attach(io: File.open(file_path), filename: image_name, content_type: image_name)
@@ -27,6 +27,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   def index
     @diary_records = DiaryRecord.all.order(created_at: :desc).page(params[:page]).per(14)
+    # タグ検索用（あいまい検索）
     if params[:category].present?
       @diary_records = @diary_records.where("category LIKE ?", "%#{params[:category]}%")
     end
@@ -45,7 +46,7 @@ class Public::DiaryRecordsController < ApplicationController
 
   def update
     @diary_record = current_user.diary_records.find(params[:id])
-
+    # すでに画像がattachされていた場合、いちどpurgeしてからattachし直す
     if params[:diary_record][:background_image_name].present?
       @diary_record.background_image.purge
       image_name = params[:diary_record][:background_image_name]
@@ -79,7 +80,7 @@ class Public::DiaryRecordsController < ApplicationController
     def diary_record_params
       params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
     end
-
+    # 投稿のuser_idがログイン中のuser_idではなかった場合
     def is_matching_login_user
       diary_record = DiaryRecord.find(params[:id])
       unless diary_record.user_id == current_user.id

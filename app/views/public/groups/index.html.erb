@@ -1,6 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-12 mt-3'>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 mt-3">
+      <!--グループ検索用-->
       <% if user_signed_in? %>
         <div class="row search_form mt-2 d-flex justify-content-end">
           <%= form_with url: group_search_path, local: true, method: :get do |f| %>
@@ -12,8 +13,19 @@
         </div>
       <% end %>
       <h2>グループ一覧</h2>
-      <%= render 'index', groups: @groups %>
+      <%= render 'index', groups: @groups, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
 <%= paginate @groups %>
+<script>
+$(document).ready(function() {
+  $('.col-xl-12').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-xl-12').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
+  });
+});
+</script>

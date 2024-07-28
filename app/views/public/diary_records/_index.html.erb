@@ -1,5 +1,5 @@
 <% diary_records.each do |diary_record| %>
-<div class="col-6">
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
   <div class="bg-image mb-3">
     <%= image_tag diary_record.get_background_image(200, 200), style: "width: 100%; border-radius: 10px;" %>
     <div class="overlay-text">
@@ -7,7 +7,7 @@
       <span class="name-truncate"><%= diary_record.user.name %></span>
     </div>
     <div class="wrap-content">
-      <div class="overlay-text1"><%= link_to diary_record.title, diary_record_path(diary_record.id) %></div>
+      <div class="overlay-text1"><%= link_to diary_record.title, diary_record_path(diary_record.id),data: {"turbolinks"=>false} %></div>
       <div class="overlay-text2 truncate-text"><%= diary_record.body %></div>
       <div class="overlay-text3">タグ： <%= diary_record.category %></div>
       <div class="overlay-image"><%= image_tag diary_record.get_diary_record_image(120, 120)%></div>
@@ -24,3 +24,14 @@
   </div>
 </div>
 <% end %>
+<script>
+$(document).ready(function() {
+  $('.col-xl-6').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-xl-6').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
+  });
+});
+</script>

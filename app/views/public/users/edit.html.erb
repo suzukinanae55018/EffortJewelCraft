@@ -4,11 +4,8 @@
       <h3>ユーザー情報編集</h3>
       <div>
       <% if @user.errors.any? %>
-        <% if @user.errors.count > 1 %>
-          <p><%= @user.errors.count %>errors prohibited this user info from being saved:</p>
-        <% else %>
-          <p><%= @user.errors.count %>error prohibited this user info from being saved:</p>
-        <% end %>
+        <% @user.errors.count %>
+          <p><%= @user.errors.count %>件のエラーにより、ユーザー情報の更新に失敗しました</p>
         <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>

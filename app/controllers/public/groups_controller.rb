@@ -5,7 +5,7 @@ class Public::GroupsController < ApplicationController
   # オーナー専用許可待ち一覧
   def permits
     @group = Group.find(params[:id])
-    @permits = @group.permits.page(params[:page]).per(15)
+    @permits = @group.permits.page(params[:page]).per(14)
   end
 
   def new
@@ -26,7 +26,7 @@ class Public::GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all.order(created_at: :desc).page(params[:page]).per(15)
+    @groups = Group.all.order(created_at: :desc).page(params[:page]).per(14)
   end
 
   def show
@@ -53,20 +53,20 @@ class Public::GroupsController < ApplicationController
     group.destroy
     redirect_to groups_path, notice: "グループの削除に成功しました。"
   end
-  # 自分がオーナーのグループ
+  # 自分がオーナーのグループ一覧
   def my_groups
-    @groups = current_user.groups.where(owner: current_user.id).order(created_at: :desc).page(params[:page]).per(16)
+    @groups = Group.where(owner_id: current_user.id).order(created_at: :desc).page(params[:page]).per(14)
   end
-  # 自分が参加しているグループ
+  # 自分が参加しているグループ一覧
   def join_groups
-    @groups = current_user.groups.all.order(created_at: :desc).page(params[:page]).per(16)
+    @groups = current_user.groups.all.order(created_at: :desc).page(params[:page]).per(14)
   end
 
   private
     def group_params
       params.require(:group).permit(:name, :introduction, :group_image, :theme, :rule)
     end
-
+    # グループのオーナーとログインユーザーが違う場合
     def ensure_correct_user
       @group = Group.find(params[:id])
       unless @group.owner_id == current_user.id

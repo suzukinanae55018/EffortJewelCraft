@@ -1,7 +1,6 @@
-<%= render 'public/searches/search' %>
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 mx-auto">
+    <div class="col-12 mx-auto">
     <h2>ユーザー一覧</h2>
     <div class="row">
         <% @users.each do |user| %>
@@ -18,10 +17,11 @@
           </div>
         <% end %>
       </div>
-      <%= paginate @users %>
+      <%= paginate @users, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>
+<!--ユーザー紹介文は35文字以上は…表記-->
 <script>
    $(document).ready(function() {
   $('.user-introduction').each(function() {

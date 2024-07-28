@@ -1,14 +1,11 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 col-md-8 mx-auto">
+    <div class="col-6 mx-auto">
       <h3>新規作成</h3>
       <div>
         <% if @diary_record.errors.any? %>
-          <% if @diary_record.errors.count > 1 %>
-            <p><%= @diary_record.errors.count %>errors prohibited this diary_record from being saved:</p>
-          <% else %>
-            <p><%= @diary_record.errors.count %>error prohibited this diary_record from being saved:</p>
-          <% end %>
+          <% @diary_record.errors.count %>
+            <p><%= @diary_record.errors.count %>件のエラーにより、この投稿の保存に失敗しました</p>
           <ul>
             <% @diary_record.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -33,6 +30,7 @@
         <%= f.label :diary_record_image, "投稿画像（任意）" %>
         <%= f.file_field :diary_record_image, accept: "image/*", class: "w-100" %>
       </div>
+      <!--ラジオボタンを選択状態にする、:background_image_nameを文字列としてコントローラに送る-->
       <div class="form-group">
         <% @images.each_with_index do |image, index| %>
           <%= f.label image do %>
@@ -52,3 +50,14 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $('.col-6').hide(); // 最初は要素を非表示にする
+
+  // 要素をふわっと表示させる処理
+  $('.col-6').each(function(index) {
+    // 順番にアニメーションで表示させる
+    $(this).delay(200 * index).fadeIn(800);
+  });
+});
+</script>

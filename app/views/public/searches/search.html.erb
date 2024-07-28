@@ -1,21 +1,21 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-sm-12 mx-auto">
+    <div class="col-12 mx-auto">
       <h3>検索結果一覧</h3>
-      <% if @range == "DiaryRecord" %>
-        <h3>DiaryRecords search for "<%= params[:word] %>"</h3>
-      <% elsif @range == "User" %>
-        <h3>Users search for "<%= params[:word] %>"</h3>
+      <% if @range == "投稿" %>
+        <h3>"<%= params[:word] %>"で投稿を検索</h3>
+      <% elsif @range == "ユーザー" %>
+        <h3>"<%= params[:word] %>"でユーザーを検索</h3>
       <% end %>
 
       <div>
         <!--検索対象モデルがUser -->
-        <% if @range == "User" %>
+        <% if @range == "ユーザー" %>
           <div class="row">
             <% @users.order(created_at: :desc).each do |user| %>
               <div class="col-md-2">
                 <div class="name-truncate">
-                  <%= link_to user_path(user) do %>
+                  <%= link_to user_path(user),data: {"turbolinks"=>false} do %>
                     <%= image_tag user.get_profile_image(100, 100), class: 'circle-image' %><br/>
                     <%= user.name %>
                   <% end %>
@@ -28,11 +28,11 @@
           </div>
           <%= paginate @users %>
 
-        <% elsif @range == "DiaryRecord" %>
+        <% elsif @range == "投稿" %>
           <div class="row">
             <%= render "public/diary_records/index", diary_records: @diary_records %>
           </div>
-          <%= paginate @diary_records %>
+          <%= paginate @diary_records, theme: 'bootstrap-5' %>
         <% end %>
       </div>
     </div>

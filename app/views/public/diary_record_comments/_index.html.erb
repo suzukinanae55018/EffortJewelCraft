@@ -3,7 +3,7 @@
     <% diary_record.diary_record_comments.each do |diary_record_comment| %>
     <tr>
       <td>
-        <%= link_to user_path(diary_record_comment.user) do %>
+        <%= link_to user_path(diary_record_comment.user),data: {"turbolinks"=>false} do %>
           <%= image_tag diary_record_comment.user.get_profile_image(100, 100), class: 'circle-image' %><br>
           <%= diary_record_comment.user.name %>
         <% end %>

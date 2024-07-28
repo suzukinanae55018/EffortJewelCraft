@@ -9,12 +9,14 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  has_many :reports, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   has_many :diary_records, dependent: :destroy
   has_many :diary_record_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_diary_records, through: :favorites, source: :diary_record
   # お気に入りをした投稿を取得できる↑
-  # 中間テーブルの記述↓
+  
   has_many :group_users, dependent: :destroy
   has_many :permits, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy

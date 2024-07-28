@@ -1,0 +1,51 @@
+<div class= "container py-5 px-sm-0">
+<% if @reports.blank? %>
+  <h4 class= "col-4 offset-4 mt-5 background text-center">報告はありません</h4>
+<% end %>
+
+  <% @reports.each do |report| %>
+    <div class= "row">
+      <div class="col-12">
+         <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>ユーザー</th>
+              <th>タイトル</th>
+              <th>投稿</th>
+              <th>タグ</th>
+              <th>画像</th>
+              <th>投稿/報告日</th>
+              <th>報告者</th>
+              <th>報告内容</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              <%= link_to admin_user_path(report.diary_record.user) do %>
+                <%= image_tag report.diary_record.user.get_profile_image(100, 100), class: 'circle-image' %><br/>
+                <%= report.diary_record.user.name %>
+              <% end %>
+              </td>
+              <td style="width: 130px;"><%= report.diary_record.title %></td>
+              <td><%= report.diary_record.body %></td>
+              <td><%= report.diary_record.category %></td>
+              <td><%= image_tag report.diary_record.get_diary_record_image(100, 100) %></td>
+
+              <td>
+                <%= report.diary_record.created_at.strftime('%Y/%m/%d') %><br />
+                <%= report.created_at.strftime('%Y/%m/%d') %>
+              </td>
+              <td><%= report.user.name %></td>
+              <td><%= report.report %></td>
+              <td><%= link_to "削除", admin_diary_record_path(report.diary_record), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %></td>
+              <td><%= link_to "問題なし", admin_report_path(report.diary_record.id), method: :patch, data: { confirm: "問題なしとして処理しますか？" }, class: "btn btn-sm btn-primary" %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= paginate @reports, theme: 'bootstrap-5' %>
+      </div>
+    </div>
+  <% end %>
+</div>
