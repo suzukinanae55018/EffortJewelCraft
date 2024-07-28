@@ -13,11 +13,11 @@
         </div>
       <% end %>
       <h2>グループ一覧</h2>
-      <%= render 'index', groups: @groups, theme: 'bootstrap-5' %>
+      <%= render 'index', groups: @groups %>
     </div>
   </div>
 </div>
-<%= paginate @groups %>
+<%= paginate @groups, theme: 'bootstrap-5' %>
 <script>
 $(document).ready(function() {
   $('.col-xl-12').hide(); // 最初は要素を非表示にする
