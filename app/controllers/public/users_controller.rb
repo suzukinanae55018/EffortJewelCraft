@@ -47,30 +47,30 @@ class Public::UsersController < ApplicationController
     @favorite_diary_records = DiaryRecord.where(id: favorites).page(params[:page]).per(14)
   end
 
-  private
-    def user_params
-      params.require(:user).permit(:name, :introduction, :profile_image, :email)
-    end
+private
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image, :email)
+  end
 
-    def is_matching_login_user
-      user = User.find(params[:id])
-      unless user.id == current_user.id
-        redirect_to user_path(current_user), notice: "他のユーザーのプロフィール編集はできません。"
-      end
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to user_path(current_user), notice: "他のユーザーのプロフィール編集はできません。"
     end
+  end
 
-    def is_matching_login_user_favorites
-      user = User.find(params[:id])
-      unless user.id == current_user.id
-        redirect_to diary_records_path, notice: "他のユーザーのいいね一覧は閲覧できません。"
-      end
+  def is_matching_login_user_favorites
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to diary_records_path, notice: "他のユーザーのいいね一覧は閲覧できません。"
     end
+  end
 
-    def ensure_guest_user
-      @user = User.find(params[:id])
+  def ensure_guest_user
+    @user = User.find(params[:id])
 
-      if @user.email == "guest@example.com"
-        redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
-      end
+    if @user.email == "guest@example.com"
+      redirect_to user_path(current_user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
+  end
 end

@@ -22,7 +22,7 @@ class Public::ReportsController < ApplicationController
       render "new"
     end
   end
-  
+
   private
 
   def report_params

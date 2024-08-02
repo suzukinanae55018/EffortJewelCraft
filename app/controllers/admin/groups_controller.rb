@@ -1,5 +1,6 @@
 class Admin::GroupsController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @groups = Group.all.order(created_at: :desc).page(params[:page]).per(15)
   end
