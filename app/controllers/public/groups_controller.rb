@@ -62,15 +62,15 @@ class Public::GroupsController < ApplicationController
     @groups = current_user.groups.all.order(created_at: :desc).page(params[:page]).per(14)
   end
 
-  private
-    def group_params
-      params.require(:group).permit(:name, :introduction, :group_image, :theme, :rule)
+private
+  def group_params
+    params.require(:group).permit(:name, :introduction, :group_image, :theme, :rule)
+  end
+  # グループのオーナーとログインユーザーが違う場合
+  def ensure_correct_user
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_user.id
+      redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です。"
     end
-    # グループのオーナーとログインユーザーが違う場合
-    def ensure_correct_user
-      @group = Group.find(params[:id])
-      unless @group.owner_id == current_user.id
-        redirect_to group_path(@group), alert: "グループオーナーのみ編集が可能です。"
-      end
-    end
+  end
 end

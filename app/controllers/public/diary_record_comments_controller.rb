@@ -13,8 +13,8 @@ class Public::DiaryRecordCommentsController < ApplicationController
     @comment.destroy
   end
 
-  private
-    def diary_record_comment_params
-      params.require(:diary_record_comment).permit(:comment)
-    end
+private
+  def diary_record_comment_params
+    params.require(:diary_record_comment).permit(:comment)
+  end
 end

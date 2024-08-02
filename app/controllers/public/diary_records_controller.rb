@@ -1,6 +1,7 @@
 class Public::DiaryRecordsController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+
   def new
     # 画像を準備した中から選べるようにする
     @diary_record = DiaryRecord.new
@@ -76,15 +77,15 @@ class Public::DiaryRecordsController < ApplicationController
     end
   end
 
-  private
-    def diary_record_params
-      params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
+private
+  def diary_record_params
+    params.require(:diary_record).permit(:title, :body, :category, :diary_record_image, :background_image)
+  end
+  # 投稿のuser_idがログイン中のuser_idではなかった場合
+  def is_matching_login_user
+    diary_record = DiaryRecord.find(params[:id])
+    unless diary_record.user_id == current_user.id
+      redirect_to diary_records_path, notice: "他のユーザーの投稿編集はできません。"
     end
-    # 投稿のuser_idがログイン中のuser_idではなかった場合
-    def is_matching_login_user
-      diary_record = DiaryRecord.find(params[:id])
-      unless diary_record.user_id == current_user.id
-        redirect_to diary_records_path, notice: "他のユーザーの投稿編集はできません。"
-      end
-    end
+  end
 end
