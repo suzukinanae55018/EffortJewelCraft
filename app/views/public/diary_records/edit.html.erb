@@ -17,15 +17,15 @@
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, class: "form-control" %>
+        <%= f.text_field :title, class: "form-control", placeholder: "45文字以内" %>
       </div>
       <div class="form-group">
         <%= f.label :body, "投稿内容" %>
-        <%= f.text_area :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control", placeholder: "300文字以内" %>
       </div>
       <div class="form-group">
         <%= f.label :category, "タグ" %>
-        <%= f.text_field :category, class: "form-control" %>
+        <%= f.text_field :category, class: "form-control", placeholder: "40文字以内" %>
       </div>
       <div class="form-group">
         <%= f.label :diary_record_image, "投稿画像" %>
@@ -33,6 +33,7 @@
       </div>
       <!--ラジオボタンを選択状態にする、:background_image_nameを文字列としてコントローラに送る-->
       <div class="form-group">
+        <div class="mb-2">背景画像を選択</div>
         <% @images.each_with_index do |image, index| %>
           <%= f.label image do %>
             <% if index == 0 %>
