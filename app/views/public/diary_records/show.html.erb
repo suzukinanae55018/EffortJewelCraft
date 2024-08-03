@@ -11,7 +11,7 @@
            <% end %>
       </div>
       <div class="overlay-text1"><%= @diary_record.title %></div>
-      <div class="overlay-text2"><%= @diary_record.body %></div>
+      <div class="overlay-text2"><%= simple_format(@diary_record.body, sanitize: true) %></div>
       <div class="overlay-text3"><%= @diary_record.category %></div>
       <div class="overlay-image"><%= image_tag @diary_record.get_diary_record_image(200, 200)%></div>
       <!--いいね機能非同期化-->
