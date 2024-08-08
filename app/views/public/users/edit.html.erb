@@ -31,6 +31,7 @@
           <%= f.label :email, "Eメール" %><br>
           <%= f.text_field :email, class: "form-control" %><br>
         </div>
+      <div>
         <span>
           <%= f.submit "更新", class: "btn btn-sm btn-success" %>
         </span>
@@ -38,6 +39,7 @@
       <span class="float-right">
         <%= link_to "退会", user_path(current_user),class: "btn btn-sm btn-danger", method: :delete, data: { confirm: "すべての情報が削除されます。本当に退会しますか？" } %>
       </span>
+      </div>
     </div>
   </div>
 </div>
