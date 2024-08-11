@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-6 mx-auto">
-      <h3>新規作成</h3>
+      <h3 style="font-family: Georgia, monospace; color: #191970;">新規作成</h3>
       <div>
         <% if @diary_record.errors.any? %>
           <% @diary_record.errors.count %>
@@ -13,7 +13,7 @@
           </ul>
         <% end %>
       </div>
-      
+
       <%= form_with model: @diary_record do |f| %>
       <div class="form-group">
         <%= f.label :title, "タイトル" %>
