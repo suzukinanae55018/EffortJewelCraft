@@ -22,21 +22,25 @@
 </div>
 <script>
   // 透明から不透明になるアニメーション
-  $("h1").css("opacity", 0).delay(300).animate({opacity: 1}, 800);
-  $("p").css("opacity", 0).delay(600).animate({opacity: 1}, 800);
-  $(".top-button").css("opacity", 0).delay(1000).animate({opacity: 1}, 900);
+  $("h1").css("opacity", 0).delay(200).animate({opacity: 1}, 800);
+  $("p").css("opacity", 0).delay(500).animate({opacity: 1}, 800);
+  $(".top-button").css("opacity", 0).delay(800).animate({opacity: 1}, 900);
 
-  $('.top-button').on('mouseenter', function(){
-  $(this).stop().animate({
-    'font-size': '24px',
-    'padding': '10px'
-  }, 300); // アニメーションの時間を指定
-  });
+  $(window).on('load', function(){
+  setTimeout(function(){
+    $('.top-button').on('mouseenter', function(){
+      $(this).stop().animate({
+        'font-size': '24px',
+        'padding': '10px'
+      }, 300);
+    });
 
-  $('.top-button').on('mouseleave', function(){
-  　$(this).stop().animate({
-      'font-size': '',
-      'padding': ''
-    }, 300); // アニメーションの時間を指定
-  });
+    $('.top-button').on('mouseleave', function(){
+      $(this).stop().animate({
+        'font-size': '',
+        'padding': ''
+      }, 300);
+    });
+  }, 1000); // 必要に応じて遅延時間を調整
+});
 </script>
