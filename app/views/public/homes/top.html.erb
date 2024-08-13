@@ -25,7 +25,7 @@
   $("h1").css("opacity", 0).delay(200).animate({opacity: 1}, 800);
   $("p").css("opacity", 0).delay(500).animate({opacity: 1}, 800);
   $(".top-button").css("opacity", 0).delay(800).animate({opacity: 1}, 900);
-
+  // ボタンにカーソルを合わせた時だけアニメーション
   $(window).on('load', function(){
   setTimeout(function(){
     $('.top-button').on('mouseenter', function(){
