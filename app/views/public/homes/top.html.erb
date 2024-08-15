@@ -22,9 +22,9 @@
 </div>
 <script>
   // 透明から不透明になるアニメーション
-  $("h1").css("opacity", 0).delay(200).animate({opacity: 1}, 800);
-  $("p").css("opacity", 0).delay(500).animate({opacity: 1}, 800);
-  $(".top-button").css("opacity", 0).delay(800).animate({opacity: 1}, 900);
+  $("h1").css("opacity", 0).delay(200).animate({opacity: 1}, 700);
+  $("p").css("opacity", 0).delay(500).animate({opacity: 1}, 700);
+  $(".top-button").css("opacity", 0).delay(800).animate({opacity: 1}, 500);
   // ボタンにカーソルを合わせた時だけアニメーション
   $(window).on('load', function(){
   setTimeout(function(){
@@ -41,6 +41,6 @@
         'padding': ''
       }, 300);
     });
-  }, 1000); // 必要に応じて遅延時間を調整
+  }, 1400); // 必要に応じて遅延時間を調整
 });
 </script>
