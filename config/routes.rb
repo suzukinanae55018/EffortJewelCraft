@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     get "diary_records/index"
     get "diary_records/destroy"
   end
-  # 顧客用
-  # URL /customers/sign_in ...
+  # ユーザー用
+  # URL /users/sign_in ...
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions"
